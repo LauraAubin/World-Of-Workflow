@@ -1,5 +1,25 @@
-## World Of Workflow
-An agenda in the style of World of Warcraft
+# World Of Workflow
+**An agenda in the style of World of Warcraft**
+
+## Setup
+
+From the root folder run,
+
+```
+$ npm install
+```
+
+Install dependencies with,
+
+```
+$ yarn setup
+```
+
+## Launch application
+
+```
+$ yarn start
+```
 
 ## Disclaimer
 

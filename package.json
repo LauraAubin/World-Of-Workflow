@@ -1,0 +1,23 @@
+{
+  "name": "world-of-workflow",
+  "description": "An agenda in the style of World of Warcraft",
+  "version": "1.0.0",
+  "scripts": {
+    "setup-client": "cd ./client && npm install",
+    "setup-server": "cd ./server && npm install",
+    "setup-electron": "cd ./electron && npm install",
+    "setup": "yarn setup-client && yarn setup-server && yarn setup-electron",
+    "start": "cd ./electron && yarn start"
+  },
+  "license": "ISC",
+  "repository": "https://github.com/LauraAubin/World-Of-Workflow",
+  "author": "LauraAubin",
+  "keywords": [
+    "World of Warcraft",
+    "Electron",
+    "React",
+    "Express",
+    "NodeJS",
+    "FileSystem"
+  ]
+}
