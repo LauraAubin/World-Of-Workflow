@@ -25,6 +25,7 @@ function createWindow() {
   mainWindow.center();
   mainWindow.maximize();
   mainWindow.hide();
+  app.dock.hide();
 
   toggleWithKeyboard();
 
