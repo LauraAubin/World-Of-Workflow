@@ -21,6 +21,8 @@ $ yarn setup
 $ yarn start
 ```
 
+Toggle visibility with `option + command`, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
+
 ## Disclaimer
 
 This project takes no credit for the brand, design, and likeness that is World of Warcraft.

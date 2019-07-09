@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 
 let mainWindow;
+let appVisible = false;
 
 app.on('ready', createWindow);
 
@@ -21,11 +22,32 @@ function createWindow() {
   });
 
   mainWindow.loadURL('http://localhost:3000/');
+  mainWindow.center();
   mainWindow.maximize();
+  mainWindow.hide();
 
+  toggleWithKeyboard();
+
+  // mainWindow.setIgnoreMouseEvents(true, {forward: true})
   // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
+}
+
+function toggleWithKeyboard() {
+  globalShortcut.register('Option + Space', () => {
+    appVisible ? hide() : show();
+  });
+}
+
+function show() {
+  mainWindow.show();
+  appVisible = true;
+}
+
+function hide() {
+  mainWindow.hide();
+  appVisible = false;
 }
