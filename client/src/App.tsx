@@ -2,6 +2,14 @@ import * as React from 'react';
 
 import './App.scss';
 
+const { ipcRenderer } = window.require('electron');
+
+declare global {
+  interface Window {
+    require: any;
+  }
+}
+
 interface State {
   readFile: string;
 }
@@ -23,10 +31,10 @@ class App extends React.Component<{}, State> {
 
     return (
       <div id='mainWindow' className='MainWindow'>
-      <div>
-        File contents of server.js:
-        <div>{readFile}</div>
-      </div>
+        <div>
+          File contents of server.js:
+          <div>{readFile}</div>
+        </div>
         <div>Bottom</div>
       </div>
     );
@@ -34,7 +42,7 @@ class App extends React.Component<{}, State> {
 
   handleClick = (event: any) => {
     if (event.toElement.id == 'mainWindow') {
-      console.log('Clicked outside of content');
+      ipcRenderer.send('hideWindow');
     }
   };
 
