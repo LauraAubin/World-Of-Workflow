@@ -1,5 +1,15 @@
-// import React from 'react';
-import * as React from "react";
+import * as React from 'react';
+import { fetchRequest } from './Utilities/Fetch';
+
+import './App.scss';
+
+const { ipcRenderer } = window.require('electron');
+
+declare global {
+  interface Window {
+    require: any;
+  }
+}
 
 interface State {
   readFile: string;
@@ -26,18 +36,14 @@ class App extends React.Component<{}, State> {
     );
   }
 
-  fetchRequest = async (type: string, path: string, body: any) => {
-    return await fetch(path, {
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: type.toUpperCase()
-    });
+  handleClick = (event: any) => {
+    if (event.toElement.id == 'mainWindow') {
+      ipcRenderer.send('hideWindow');
+    }
   };
 
   readFile = async (file: string) => {
-    await this.fetchRequest('post', 'readFile', { file })
+    await fetchRequest('post', 'readFile', { file })
       .then(resp => resp.json())
       .then(data => {
         this.setState({ readFile: data.fileContents });
