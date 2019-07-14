@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
 
 let mainWindow;
 let appVisible = false;
@@ -13,8 +13,15 @@ app.on('activate', function() {
   if (mainWindow === null) createWindow();
 });
 
+ipcMain.on('hideWindow', () => {
+  mainWindow.hide();
+});
+
 function createWindow() {
   mainWindow = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true
+    },
     width: 1400,
     height: 900,
     frame: false,

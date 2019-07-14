@@ -23,15 +23,20 @@ class App extends React.Component<{}, State> {
 
   componentDidMount() {
     this.readFile('./server.js');
+
+    document.addEventListener('mousedown', this.handleClick);
   }
 
   render() {
     const { readFile } = this.state;
 
     return (
-      <div>
-        File contents of server.js:
-        <div>{readFile}</div>
+      <div id='mainWindow' className='MainWindow'>
+        <div>
+          File contents of server.js:
+          <div>{readFile}</div>
+        </div>
+        <div>Bottom</div>
       </div>
     );
   }
