@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fetchRequest } from './Utilities/Fetch';
+import { readFile } from './Utilities/Database';
 
 import './App.scss';
 
@@ -22,7 +22,9 @@ class App extends React.Component<{}, State> {
   }
 
   componentDidMount() {
-    this.readFile('./server.js');
+    readFile().then(data => {
+      this.setState({ readFile: data.fileContents });
+    });
 
     document.addEventListener('mousedown', this.handleClick);
   }
@@ -45,14 +47,6 @@ class App extends React.Component<{}, State> {
     if (event.toElement.id == 'mainWindow') {
       ipcRenderer.send('hideWindow');
     }
-  };
-
-  readFile = async (file: string) => {
-    await fetchRequest('post', 'readFile', { file })
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({ readFile: data.fileContents });
-      });
   };
 }
 
