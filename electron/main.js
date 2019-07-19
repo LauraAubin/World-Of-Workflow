@@ -14,7 +14,7 @@ app.on('activate', function() {
 });
 
 ipcMain.on('hideWindow', () => {
-  mainWindow.hide();
+  hide();
 });
 
 function createWindow() {
