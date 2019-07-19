@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import Layout from './structure/Layout';
+
 import './App.scss';
 
 const { ipcRenderer } = window.require('electron');
@@ -18,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div id='mainWindow' className='MainWindow'>
-        hi
+        <Layout />
       </div>
     );
   }
