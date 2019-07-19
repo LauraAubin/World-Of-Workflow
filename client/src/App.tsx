@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { readFile } from './Utilities/Database';
 
 import './App.scss';
 
@@ -11,34 +10,15 @@ declare global {
   }
 }
 
-interface State {
-  readFile: string;
-}
-
-class App extends React.Component<{}, State> {
-  constructor(state: State) {
-    super(state);
-    this.state = { readFile: '' };
-  }
-
+class App extends React.Component {
   componentDidMount() {
-    readFile().then(data => {
-      this.setState({ readFile: data.fileContents });
-    });
-
     document.addEventListener('mousedown', this.handleClick);
   }
 
   render() {
-    const { readFile } = this.state;
-
     return (
       <div id='mainWindow' className='MainWindow'>
-        <div>
-          File contents of server.js:
-          <div>{readFile}</div>
-        </div>
-        <div>Bottom</div>
+        hi
       </div>
     );
   }
