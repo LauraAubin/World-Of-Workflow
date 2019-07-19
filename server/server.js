@@ -17,7 +17,7 @@ app.post('/readFile', (request, response) => {
 app.post('/writeTo', (request, response) => {
   const { table, contents } = request.body;
 
-  addNewRecord({ table, message: contents.message });
+  addNewRecord({ table, ...expandContents(contents) });
 });
 
 app.post('/readFrom', (request, response) => {
@@ -40,13 +40,26 @@ function writeFile(contents) {
   return fs.writeFileSync('./DB.js', contents, 'utf8');
 }
 
+function expandContents(contents) {
+  let expandedContents = {};
+  for (const [key, value] of Object.entries(contents)) {
+    expandedContents[key] = value;
+  }
+
+  return expandedContents;
+}
+
 function addNewRecord(contents) {
   const databaseContents = JSON.parse(readFile('DB.js'));
 
-  databaseContents.push({ ...contents, created_at: new Date() });
+  databaseContents.push({ ...contents, ...defaultColumns() });
   const updatedDB = addNewLines(JSON.stringify(databaseContents));
 
   writeFile(updatedDB);
+}
+
+function defaultColumns() {
+  return { created_at: new Date() };
 }
 
 function addNewLines(s) {
