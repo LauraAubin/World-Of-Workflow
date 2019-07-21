@@ -18,7 +18,7 @@ export default class Grid extends React.Component<Props, any> {
     const { columns, rows, children } = this.props;
 
     const styles = {
-      height: '100vh',
+      height: '100%',
       display: 'Grid',
       gridTemplateColumns: columns,
       gridTemplateRows: rows
