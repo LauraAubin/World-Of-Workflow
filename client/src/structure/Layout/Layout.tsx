@@ -10,7 +10,7 @@ import Grid from '../Grid';
 export default class Layout extends React.Component {
   public render() {
     return (
-      <Grid columns={`1fr 1fr`} rows={`1fr 1fr 1fr`}>
+      <Grid columns={`1fr 1fr`} rows={`15% 1fr 10%`}>
         <Grid.Section
           spanColumns={{ start: 1, end: 2 }}
           spanRows={{ start: 1, end: 2 }}
