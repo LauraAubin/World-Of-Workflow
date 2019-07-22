@@ -7,7 +7,12 @@ declare global {
 }
 
 export function hideWindow(event: any) {
-  if (event.toElement.id !== 'mainElement') {
-    ipcRenderer.send('hideWindow');
-  }
+  let hideWindow = true;
+  event.path.map(object => {
+    if (object.id == 'mainElement') {
+      hideWindow = false;
+    }
+  });
+
+  hideWindow && ipcRenderer.send('hideWindow');
 }
