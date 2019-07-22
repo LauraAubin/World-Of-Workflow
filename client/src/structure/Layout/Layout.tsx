@@ -23,6 +23,14 @@ export default class Layout extends React.Component<{}, State> {
     this.state = { showGM: false };
   }
 
+  componentDidMount() {
+    document.addEventListener('keypress', event => {
+      if (event.key == 'g') {
+        this.toggleGM();
+      }
+    });
+  }
+
   public render() {
     const { showGM } = this.state;
 
@@ -59,7 +67,7 @@ export default class Layout extends React.Component<{}, State> {
           spanColumns={{ start: 2, end: 3 }}
           spanRows={{ start: 2, end: 3 }}
         >
-          <Modal GM={showGM} />
+          <Modal showGM={showGM} />
         </Grid.Section>
 
         <Grid.Section
