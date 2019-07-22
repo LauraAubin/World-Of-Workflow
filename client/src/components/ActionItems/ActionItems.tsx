@@ -1,9 +1,13 @@
 import * as React from 'react';
 
-export default function ActionItems() {
+interface Props {
+  toggleGM(): void;
+}
+
+export default function ActionItems({ toggleGM }: Props) {
   return (
     <div id='mainElement'>
-      <button>GM</button>
+      <button onClick={toggleGM}>GM</button>
     </div>
   );
 }

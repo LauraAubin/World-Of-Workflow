@@ -1,0 +1,15 @@
+$GMSize: 400px;
+
+.ModalArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.GM {
+  width: $GMSize;
+  height: $GMSize;
+  background: lightyellow;
+}

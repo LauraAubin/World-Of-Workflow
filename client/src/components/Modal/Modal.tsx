@@ -1,5 +1,17 @@
 import * as React from 'react';
 
-export default function App() {
-  return <div>Modal</div>;
+import './Modal.scss';
+
+interface Props {
+  GM: boolean;
+}
+
+export default function Modal({ GM }: Props) {
+  const GmMarkup = (
+    <div className='GM' id='mainElement'>
+      GM
+    </div>
+  );
+
+  return <div className='ModalArea'>{GM && GmMarkup}</div>;
 }
