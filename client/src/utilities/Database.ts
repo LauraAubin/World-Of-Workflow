@@ -6,7 +6,7 @@ export async function readFile() {
 
 export async function writeTo(
   table: string,
-  contents: { [key in any]: string | boolean }
+  contents: { [key in any]: string | boolean | Date }
 ) {
   await fetchRequest('post', 'writeTo', { table, contents }).then(resp =>
     resp.json()

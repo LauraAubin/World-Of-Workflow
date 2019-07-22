@@ -1,17 +1,13 @@
 import * as React from 'react';
 
+import GM from './GM';
+
 import './Modal.scss';
 
 interface Props {
-  GM: boolean;
+  showGM: boolean;
 }
 
-export default function Modal({ GM }: Props) {
-  const GmMarkup = (
-    <div className='GM' id='mainElement'>
-      GM
-    </div>
-  );
-
-  return <div className='ModalArea'>{GM && GmMarkup}</div>;
+export default function Modal({ showGM }: Props) {
+  return <div className='ModalArea'>{showGM && <GM />}</div>;
 }
