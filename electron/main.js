@@ -22,10 +22,9 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    width: 1400,
-    height: 900,
     frame: false,
-    transparent: true
+    transparent: true,
+    hasShadow: false
   });
 
   mainWindow.loadURL('http://localhost:3000/');
