@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-export default class ActionItems extends React.Component {
-  public render() {
-    return <div>Action items</div>;
-  }
+export default function ActionItems() {
+  return (
+    <div id='mainElement'>
+      <button>GM</button>
+    </div>
+  );
 }
