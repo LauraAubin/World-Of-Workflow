@@ -8,7 +8,7 @@ export default function QuestList() {
       <div>?</div>
       <div className='questDetails'>
         <div>Title</div>
-        <div>Description</div>
+        <div>Quest objectives</div>
       </div>
     </div>
   );
