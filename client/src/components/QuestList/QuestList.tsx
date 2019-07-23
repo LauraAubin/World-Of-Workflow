@@ -1,5 +1,26 @@
 import * as React from 'react';
 
+import './QuestList.scss';
+
 export default function QuestList() {
-  return <div>QuestList</div>;
+  const quest = (
+    <div className='questContainer'>
+      <div>?</div>
+      <div className='questDetails'>
+        <div>Title</div>
+        <div>Description</div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className='alignRight'>
+      <div className='stack'>
+        <div className='questTitle'>Quests</div>
+        {quest}
+        {quest}
+        {quest}
+      </div>
+    </div>
+  );
 }

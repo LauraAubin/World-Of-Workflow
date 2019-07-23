@@ -1,0 +1,27 @@
+@import '../../utilities/spacing.scss';
+
+.alignRight {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: spacing(loose);
+}
+
+.stack {
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.questTitle {
+  font-weight: bold;
+  border: black solid 1px;
+}
+
+.questContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: spacing(tight) 0;
+}
+
+.questDetails {
+  flex-direction: column;
+}
