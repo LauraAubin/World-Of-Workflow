@@ -1,0 +1,16 @@
+@function spacing($size: 'default') {
+  @if map-has-key($spacing, $size) {
+    @return  map-get($spacing, $size);
+
+  } @else {
+    @return map-get($spacing, 'default');
+  }
+}
+
+$spacing: (
+  extraTight: 4px,
+  tight: 8px,
+  default: 16px,
+  loose: 20px,
+  extraLoose: 32px,
+);
