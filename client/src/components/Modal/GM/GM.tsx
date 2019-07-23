@@ -8,6 +8,7 @@ import './GM.scss';
 
 export default function GM() {
   const [title, setTitle] = useState('');
+  const [location, setLocation] = useState('');
   const [shortDescription, setShortDescription] = useState('');
   const [longDescription, setLongDescription] = useState('');
   const [dueDate, setDueDate] = useState(new Date());
@@ -17,6 +18,7 @@ export default function GM() {
     const value = event.target.value;
 
     name == 'title' && setTitle(value);
+    name == 'location' && setLocation(value);
     name == 'shortDescription' && setShortDescription(value);
     name == 'longDescription' && setLongDescription(value);
   };
@@ -24,6 +26,7 @@ export default function GM() {
   const submit = () => {
     writeTo('quest', {
       title,
+      location,
       shortDescription,
       longDescription,
       dueDate,
@@ -36,6 +39,11 @@ export default function GM() {
       <div>
         Title
         <input name='title' value={title} onChange={handleChange} />
+      </div>
+
+      <div>
+        Location
+        <input name='location' value={location} onChange={handleChange} />
       </div>
 
       <div>
