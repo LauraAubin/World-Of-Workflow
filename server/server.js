@@ -25,6 +25,12 @@ app.post('/readFrom', (request, response) => {
 
   const filterByTable = filterRecordsByTable(table);
 
+  if (!where) {
+    response.send({ records: filterByTable });
+
+    return;
+  }
+
   const filterByExpression = separateExpressions(where).map(expression =>
     filterRecordsByExpression(filterByTable, expression)
   );

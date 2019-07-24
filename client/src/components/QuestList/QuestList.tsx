@@ -1,14 +1,20 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+
+import { readFrom } from '../../utilities/Database';
 
 import './QuestList.scss';
 
 export default function QuestList() {
-  const quest = (
+  const [records, setRecords] = useState([]);
+
+  readFrom('quest').then(data => setRecords(data.records));
+
+  const quest = record => (
     <div className='questContainer'>
       <div>?</div>
       <div className='questDetails'>
-        <div>Title</div>
-        <div>Quest objectives</div>
+        <div>{record.title}</div>
+        <div>{record.questObjectives}</div>
       </div>
     </div>
   );
@@ -17,9 +23,7 @@ export default function QuestList() {
     <div className='alignRight'>
       <div className='stack'>
         <div className='questTitle'>Quests</div>
-        {quest}
-        {quest}
-        {quest}
+        {records.map(record => quest(record))}
       </div>
     </div>
   );
