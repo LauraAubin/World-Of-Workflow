@@ -26,7 +26,10 @@ export default class Layout extends React.Component<{}, State> {
   componentDidMount() {
     document.addEventListener('keypress', event => {
       if (event.key == 'g') {
-        this.toggleGM();
+        const element =
+          document.activeElement && document.activeElement.nodeName;
+
+        element == 'BODY' && this.toggleGM();
       }
     });
   }
