@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { simpleDate } from '../../utilities/Date';
+
 const MONTHS = [
   'January',
   'February',
@@ -20,20 +22,12 @@ interface Props {
 }
 
 export default function DateInput({ onChange }: Props) {
-  const currentDate = new Date();
-
-  const currentDay = currentDate.getDate();
-  const currentMonth = MONTHS[currentDate.getMonth()];
-  const currentYear = currentDate.getFullYear();
-
-  const [date, setDate] = useState(
-    `${currentMonth} ${currentDay}, ${currentYear}`
-  );
+  const [date, setDate] = useState(simpleDate(new Date()));
 
   useEffect(() => {
     const alwaysIncludeYear = isYearProvided()
       ? date
-      : `${date} ${currentYear}`;
+      : `${date} ${new Date().getFullYear()}`;
 
     onChange(new Date(alwaysIncludeYear));
   });
