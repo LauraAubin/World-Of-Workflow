@@ -12,7 +12,7 @@ export default function QuestList() {
   readFrom('quest').then(data => setRecords(data.records));
 
   const quest = (record: Quest) => (
-    <div className='questContainer'>
+    <div className='questContainer' key={record.title}>
       <div>?</div>
       <div className='questDetails'>
         <div>{record.title}</div>
