@@ -1,5 +1,5 @@
 # World Of Workflow
-**An agenda in the style of World of Warcraft**
+**A to-do list in the style of World of Warcraft.**
 
 ## Setup
 
