@@ -1,12 +1,14 @@
 import { fetchRequest } from './Fetch';
 
-export async function readFile() {
-  return await fetchRequest('post', 'readFile', {}).then(resp => resp.json());
+type columnTypes = string | boolean | Date;
+
+export async function readDatabase() {
+  return await fetchRequest('get', 'readDatabase').then(resp => resp.json());
 }
 
 export async function writeTo(
   table: string,
-  contents: { [key in any]: string | boolean | Date }
+  contents: { [key in any]: columnTypes }
 ) {
   await fetchRequest('post', 'writeTo', { table, contents }).then(resp =>
     resp.json()

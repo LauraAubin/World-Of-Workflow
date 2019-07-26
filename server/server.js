@@ -10,7 +10,7 @@ const EXTENSIONS = ['and'];
 
 app.use(bodyParser.json());
 
-app.post('/readFile', (request, response) => {
+app.get('/readDatabase', (request, response) => {
   response.send({ fileContents: readFile() });
 });
 
