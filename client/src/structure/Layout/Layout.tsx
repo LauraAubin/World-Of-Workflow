@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { ModalTypes } from '../../types';
+
 import autobind from 'autobind-decorator';
 
 import Actionbar from '../../components/Actionbar';
@@ -14,13 +16,13 @@ import Grid from '../Grid';
 import './Layout.scss';
 
 interface State {
-  showGM: boolean;
+  showModal: ModalTypes | undefined;
 }
 
 export default class Layout extends React.Component<{}, State> {
   constructor(state: State) {
     super(state);
-    this.state = { showGM: false };
+    this.state = { showModal: undefined };
   }
 
   componentDidMount() {
@@ -29,13 +31,13 @@ export default class Layout extends React.Component<{}, State> {
         const element =
           document.activeElement && document.activeElement.nodeName;
 
-        element == 'BODY' && this.toggleGM();
+        element == 'BODY' && this.setShownModal(ModalTypes.GM);
       }
     });
   }
 
   public render() {
-    const { showGM } = this.state;
+    const { showModal } = this.state;
 
     const actionsMarkup = (
       <div className='attachToBottom'>
@@ -45,7 +47,7 @@ export default class Layout extends React.Component<{}, State> {
           </div>
         </div>
         <div className='rightAlign'>
-          <ActionItems toggleGM={this.toggleGM} />
+          <ActionItems setShownModal={this.setShownModal} />
         </div>
       </div>
     );
@@ -67,10 +69,10 @@ export default class Layout extends React.Component<{}, State> {
         </Grid.Section>
 
         <Grid.Section
-          spanColumns={{ start: 2, end: 3 }}
+          spanColumns={{ start: 1, end: 4 }}
           spanRows={{ start: 2, end: 3 }}
         >
-          <Modal showGM={showGM} />
+          <Modal showModal={showModal} />
         </Grid.Section>
 
         <Grid.Section
@@ -91,9 +93,11 @@ export default class Layout extends React.Component<{}, State> {
   }
 
   @autobind
-  public toggleGM() {
-    const { showGM } = this.state;
+  public setShownModal(show: ModalTypes) {
+    const { showModal } = this.state;
 
-    this.setState({ showGM: !showGM });
+    const toggleAlreadyShown = showModal ? undefined : show;
+
+    this.setState({ showModal: toggleAlreadyShown });
   }
 }

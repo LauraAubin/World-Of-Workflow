@@ -8,3 +8,8 @@ export interface Quest {
   test: boolean;
   created_at: Date;
 }
+
+export enum ModalTypes {
+  GM = 'GM',
+  Quest = 'quest'
+}

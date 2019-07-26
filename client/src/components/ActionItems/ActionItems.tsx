@@ -1,13 +1,15 @@
 import * as React from 'react';
 
+import { ModalTypes } from '../../types';
+
 interface Props {
-  toggleGM(): void;
+  setShownModal(ModalTypes): void;
 }
 
-export default function ActionItems({ toggleGM }: Props) {
+export default function ActionItems({ setShownModal }: Props) {
   return (
     <div id='mainElement'>
-      <button onClick={toggleGM}>GM</button>
+      <button onClick={() => setShownModal(ModalTypes.GM)}>GM</button>
     </div>
   );
 }
