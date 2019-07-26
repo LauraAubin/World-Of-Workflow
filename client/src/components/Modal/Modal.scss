@@ -1,6 +1,9 @@
+@import '../../utilities/spacing.scss';
+
 .ModalArea {
   display: flex;
   justify-content: flex-start;
+  padding-left: spacing(loose);
   width: 100%;
   height: 100%;
 }
