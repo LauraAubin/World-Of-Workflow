@@ -11,5 +11,5 @@ export interface Quest {
 
 export enum ModalTypes {
   GM = 'GM',
-  Quest = 'quest'
+  Quest = 'Quest'
 }
