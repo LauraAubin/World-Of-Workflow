@@ -6,7 +6,7 @@ export interface Quest {
   questObjectives: string;
   dueDate: string;
   test: boolean;
-  created_at: Date;
+  created_at: string;
 }
 
 export enum ModalTypes {

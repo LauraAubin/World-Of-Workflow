@@ -1,5 +1,11 @@
 import React from 'react';
 
-export default function Quest() {
-  return <div>Quest</div>
+import { Quest as QuestType } from '../../../types';
+
+interface Props {
+  selectedQuest: QuestType;
+}
+
+export default function Quest({ selectedQuest }: Props) {
+  return selectedQuest && <div>{selectedQuest.title}</div>;
 }

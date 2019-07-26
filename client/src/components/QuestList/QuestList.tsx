@@ -6,13 +6,21 @@ import { Quest } from '../../types';
 
 import './QuestList.scss';
 
-export default function QuestList() {
+interface Props {
+  setSelectedQuest(selectedQuest): void;
+}
+
+export default function QuestList({ setSelectedQuest }: Props) {
   const [records, setRecords] = useState<Quest[]>([]);
 
   readFrom('quest').then(data => setRecords(data.records));
 
   const quest = (record: Quest) => (
-    <div className='questContainer' key={record.title}>
+    <div
+      className='questContainer'
+      key={record.created_at}
+      onClick={() => setSelectedQuest(record)}
+    >
       <div>?</div>
       <div className='questDetails'>
         <div>{record.title}</div>

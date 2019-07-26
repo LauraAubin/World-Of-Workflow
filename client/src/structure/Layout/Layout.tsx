@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ModalTypes } from '../../types';
+import { Quest, ModalTypes } from '../../types';
 
 import autobind from 'autobind-decorator';
 
@@ -17,12 +17,13 @@ import './Layout.scss';
 
 interface State {
   showModal: ModalTypes | undefined;
+  selectedQuest?: Quest;
 }
 
 export default class Layout extends React.Component<{}, State> {
   constructor(state: State) {
     super(state);
-    this.state = { showModal: undefined };
+    this.state = { showModal: undefined, selectedQuest: undefined };
   }
 
   componentDidMount() {
@@ -37,7 +38,7 @@ export default class Layout extends React.Component<{}, State> {
   }
 
   public render() {
-    const { showModal } = this.state;
+    const { showModal, selectedQuest } = this.state;
 
     const actionsMarkup = (
       <div className='attachToBottom'>
@@ -72,14 +73,14 @@ export default class Layout extends React.Component<{}, State> {
           spanColumns={{ start: 1, end: 4 }}
           spanRows={{ start: 2, end: 3 }}
         >
-          <Modal showModal={showModal} />
+          <Modal showModal={showModal} selectedQuest={selectedQuest} />
         </Grid.Section>
 
         <Grid.Section
           spanColumns={{ start: 3, end: 4 }}
           spanRows={{ start: 2, end: 3 }}
         >
-          <QuestList />
+          <QuestList setSelectedQuest={this.setSelectedQuest} />
         </Grid.Section>
 
         <Grid.Section
@@ -96,8 +97,18 @@ export default class Layout extends React.Component<{}, State> {
   public setShownModal(show: ModalTypes) {
     const { showModal } = this.state;
 
-    const toggleAlreadyShown = showModal ? undefined : show;
+    const questsNeverToggle = show == ModalTypes.Quest;
+    const alreadyShown = show == showModal;
 
-    this.setState({ showModal: toggleAlreadyShown });
+    const toggleModal = alreadyShown && !questsNeverToggle ? undefined : show;
+
+    this.setState({ showModal: toggleModal });
+  }
+
+  @autobind
+  public setSelectedQuest(selectedQuest: Quest) {
+    this.setState({ selectedQuest });
+
+    this.setShownModal(ModalTypes.Quest);
   }
 }

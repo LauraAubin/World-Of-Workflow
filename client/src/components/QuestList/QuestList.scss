@@ -14,12 +14,14 @@
 .questTitle {
   font-weight: bold;
   border: black solid 1px;
+  cursor: default;
 }
 
 .questContainer {
   display: flex;
   flex-wrap: nowrap;
   padding: spacing(tight) 0;
+  cursor: pointer;
 }
 
 .questDetails {
