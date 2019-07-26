@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const MONTHS = [
   'January',
   'February',
@@ -6,7 +8,7 @@ const MONTHS = [
   'May',
   'June',
   'July',
-  'August',
+  'August', 
   'September',
   'October',
   'November',
@@ -20,3 +22,17 @@ export function simpleDate(d: Date) {
 
   return `${month} ${day}, ${year}`;
 }
+
+export const TODAY = new Date();
+
+export const TOMORROW = new Date(
+  moment()
+    .add('1', 'd')
+    .toDate()
+);
+
+export const NEXT_WEEK = new Date(
+  moment()
+    .add('1', 'w')
+    .toDate()
+);

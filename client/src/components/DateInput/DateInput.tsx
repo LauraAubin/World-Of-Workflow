@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { simpleDate } from '../../utilities/Date';
+import { TODAY } from '../../utilities/Date';
 
 const MONTHS = [
   'January',
@@ -22,12 +23,12 @@ interface Props {
 }
 
 export default function DateInput({ onChange }: Props) {
-  const [date, setDate] = useState(simpleDate(new Date()));
+  const [date, setDate] = useState(simpleDate(TODAY));
 
   useEffect(() => {
     const alwaysIncludeYear = isYearProvided()
       ? date
-      : `${date} ${new Date().getFullYear()}`;
+      : `${date} ${TODAY.getFullYear()}`;
 
     onChange(new Date(alwaysIncludeYear));
   });
