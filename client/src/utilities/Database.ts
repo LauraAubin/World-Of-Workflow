@@ -20,3 +20,9 @@ export async function readFrom(table: string, where?: any) {
     resp.json()
   );
 }
+
+export async function update(record: {}, where: { [key in any]: columnTypes }) {
+  return await fetchRequest('post', 'update', { record, where }).then(resp =>
+    resp.json()
+  );
+}

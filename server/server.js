@@ -38,12 +38,29 @@ app.post('/readFrom', (request, response) => {
   response.send({ records: filterByExpression });
 });
 
+app.post('/update', (request, response) => {
+  const { record, where } = request.body;
+
+  let databaseContents = JSON.parse(readFile());
+  const matchingRecord = indexOfObject(databaseContents, record);
+
+  databaseContents[matchingRecord] = {
+    ...databaseContents[matchingRecord],
+    ...where,
+    updated_at: new Date()
+  };
+
+  writeFile(databaseContents);
+});
+
 function readFile() {
   return fs.readFileSync('./DB.js', 'utf8');
 }
 
 function writeFile(contents) {
-  return fs.writeFileSync('./DB.js', contents, 'utf8');
+  const formatContents = addNewLines(JSON.stringify(contents));
+
+  return fs.writeFileSync('./DB.js', formatContents, 'utf8');
 }
 
 function expandContents(contents) {
@@ -59,9 +76,8 @@ function addNewRecord(contents) {
   const databaseContents = JSON.parse(readFile('DB.js'));
 
   databaseContents.push({ ...contents, ...defaultColumns() });
-  const updatedDB = addNewLines(JSON.stringify(databaseContents));
 
-  writeFile(updatedDB);
+  writeFile(databaseContents);
 }
 
 function defaultColumns() {
@@ -121,6 +137,12 @@ function rightSideOfExpression(expression, operator) {
     expression.length,
     expression.indexOf(operator) + operator.length
   );
+}
+
+function indexOfObject(array, object) {
+  for (let i = 0; i < array.length; i++) {
+    if (JSON.stringify(array[i]) == JSON.stringify(object)) return i;
+  }
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
