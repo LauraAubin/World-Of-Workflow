@@ -6,6 +6,7 @@ export interface Quest {
   questObjectives: string;
   dueDate: string;
   test: boolean;
+  completed: boolean;
   created_at: string;
 }
 

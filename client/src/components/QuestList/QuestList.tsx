@@ -39,7 +39,9 @@ export default function QuestList({ setSelectedQuest }: Props) {
 
   const renderDailyQuests = (title: string, dueDate: Date) => {
     const filterRecords = records.filter(
-      record => simpleDate(new Date(record.dueDate)) == simpleDate(dueDate)
+      record =>
+        simpleDate(new Date(record.dueDate)) == simpleDate(dueDate) &&
+        !record.completed
     );
 
     return questSection(title, filterRecords);
@@ -48,7 +50,9 @@ export default function QuestList({ setSelectedQuest }: Props) {
   const renderQuestRange = (title: string, start: Date, end: Date) => {
     const filterRecords = records.filter(
       record =>
-        new Date(record.dueDate) > start && new Date(record.dueDate) < end
+        new Date(record.dueDate) > start &&
+        new Date(record.dueDate) < end &&
+        !record.completed
     );
 
     return questSection(title, filterRecords);
@@ -56,7 +60,7 @@ export default function QuestList({ setSelectedQuest }: Props) {
 
   const renderRemainingQuests = (title: string, after: Date) => {
     const filterRecords = records.filter(
-      record => new Date(record.dueDate) > after
+      record => new Date(record.dueDate) > after && !record.completed
     );
 
     return questSection(title, filterRecords);
