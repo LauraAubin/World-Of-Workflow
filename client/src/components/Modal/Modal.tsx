@@ -16,7 +16,7 @@ export default function Modal({ showModal, selectedQuest }: Props) {
   const renderModal =
     (showModal == ModalTypes.GM && <GM />) ||
     (showModal == ModalTypes.Quest && selectedQuest && (
-      <Quest selectedQuest={selectedQuest} />
+      <Quest quest={selectedQuest} />
     ));
 
   return <div className='ModalArea'>{renderModal}</div>;

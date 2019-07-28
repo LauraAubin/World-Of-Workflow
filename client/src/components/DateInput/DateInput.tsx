@@ -3,21 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { simpleDate } from '../../utilities/Date';
 import { TODAY } from '../../utilities/Date';
 
-const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-];
-
 interface Props {
   onChange(Date): void;
 }

@@ -13,3 +13,5 @@ export enum ModalTypes {
   GM = 'GM',
   Quest = 'Quest'
 }
+
+export type columnTypes = string | boolean | Date;

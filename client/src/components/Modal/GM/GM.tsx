@@ -30,6 +30,7 @@ export default function GM() {
       description,
       questObjectives,
       dueDate,
+      completed: false,
       test: true
     });
   };
