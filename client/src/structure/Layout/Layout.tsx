@@ -73,7 +73,11 @@ export default class Layout extends React.Component<{}, State> {
           spanColumns={{ start: 1, end: 4 }}
           spanRows={{ start: 2, end: 3 }}
         >
-          <Modal showModal={showModal} selectedQuest={selectedQuest} />
+          <Modal
+            showModal={showModal}
+            selectedQuest={selectedQuest}
+            setShownModal={this.setShownModal}
+          />
         </Grid.Section>
 
         <Grid.Section

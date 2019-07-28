@@ -7,12 +7,16 @@ import './Quest.scss';
 
 interface Props {
   quest: QuestType;
+  setShownModal(show): void;
 }
 
-export default function Quest({ quest }: Props) {
+export default function Quest({ quest, setShownModal }: Props) {
   const { title, questObjectives } = quest;
 
-  const completeQuest = () => update(quest, { completed: true });
+  const completeQuest = () => {
+    update(quest, { completed: true });
+    setShownModal(undefined);
+  };
 
   return (
     <div className='QuestContainer' id='mainElement'>
