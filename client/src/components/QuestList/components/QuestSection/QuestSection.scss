@@ -1,0 +1,20 @@
+@import '../../../../utilities/colors.scss';
+
+$questTitleFontSize: 15px;
+
+.questTitle {
+  font-family: 'Friz Quadrata';
+  font-size: $questTitleFontSize;
+  font-weight: 500;
+  color: color(yellow);
+  text-shadow: 1px 0 0 color(ink, light);
+  cursor: default;
+}
+
+.questSectionImage {
+  height: 30px;
+}
+
+.questSectionImageFrame {
+  height: 65px;
+}

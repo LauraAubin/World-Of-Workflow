@@ -1,7 +1,4 @@
 @import '../../utilities/spacing.scss';
-@import '../../utilities/colors.scss';
-
-$questTitleFontSize: 15px;
 
 .alignRight {
   display: flex;
@@ -12,32 +9,4 @@ $questTitleFontSize: 15px;
 .stack {
   flex-direction: column;
   max-width: 250px;
-}
-
-.questTitle {
-  font-family: 'Friz Quadrata';
-  font-size: $questTitleFontSize;
-  font-weight: 500;
-  color: color(yellow);
-  text-shadow: 1px 1px 0 color(ink, light);
-  cursor: default;
-}
-
-.questContainer {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: spacing(tight) 0;
-  cursor: pointer;
-}
-
-.questDetails {
-  flex-direction: column;
-}
-
-.questSectionImage {
-  height: 30px;
-}
-
-.questSectionImageFrame {
-  height: 65px;
 }

@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 import { readFrom } from '../../utilities/Database';
 import { simpleDate, TODAY, TOMORROW, NEXT_WEEK } from '../../utilities/Date';
-import { Quest } from '../../types';
+import { Quest as QuestType } from '../../types';
 
-import Frame from '../../art/QuestList/Frame.png';
-import Image from '../Image';
+import QuestSection from './components/QuestSection';
 
 import './QuestList.scss';
 
@@ -14,38 +13,17 @@ interface Props {
 }
 
 export default function QuestList({ setSelectedQuest }: Props) {
-  const [records, setRecords] = useState<Quest[]>([]);
+  const [records, setRecords] = useState<QuestType[]>([]);
 
   readFrom('quest').then(data => setRecords(data.records));
 
-  const quest = (record: Quest) => (
-    <div
-      className='questContainer'
-      key={record.created_at}
-      onClick={() => setSelectedQuest(record)}
-    >
-      <div>?</div>
-      <div className='questDetails'>
-        <div>{record.title}</div>
-        <div>{record.questObjectives}</div>
-      </div>
-    </div>
-  );
-
-  const questSectionTitle = (title: string) => (
-    <div className='questTitle'>{title}</div>
-  );
-
-  const questSection = (title: string, records: Quest[]) =>
+  const questSection = (title: string, records: QuestType[]) =>
     records.length > 0 && (
-      <>
-        <Image text={questSectionTitle(title)} textX={25} textY={12}>
-          <div className='questSectionImage'>
-            <img src={Frame} className='questSectionImageFrame' />
-          </div>
-        </Image>
-        {records.map(record => quest(record))}
-      </>
+      <QuestSection
+        title={title}
+        records={records}
+        setSelectedQuest={setSelectedQuest}
+      />
     );
 
   const renderDailyQuests = (title: string, dueDate: Date) => {
