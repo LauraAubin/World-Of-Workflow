@@ -4,6 +4,9 @@ import { readFrom } from '../../utilities/Database';
 import { simpleDate, TODAY, TOMORROW, NEXT_WEEK } from '../../utilities/Date';
 import { Quest } from '../../types';
 
+import Frame from '../../art/QuestList/Frame.png';
+import Image from '../Image';
+
 import './QuestList.scss';
 
 interface Props {
@@ -29,10 +32,18 @@ export default function QuestList({ setSelectedQuest }: Props) {
     </div>
   );
 
+  const questSectionTitle = (title: string) => (
+    <div className='questTitle'>{title}</div>
+  );
+
   const questSection = (title: string, records: Quest[]) =>
     records.length > 0 && (
       <>
-        <div className='questTitle'>{title}</div>
+        <Image text={questSectionTitle(title)} textX={25} textY={12}>
+          <div className='questSectionImage'>
+            <img src={Frame} className='questSectionImageFrame' />
+          </div>
+        </Image>
         {records.map(record => quest(record))}
       </>
     );
