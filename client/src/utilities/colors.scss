@@ -1,0 +1,38 @@
+@function color($color, $hue: 'default') {
+  @if map-has-key($colors, $color) {
+
+    $scoped: map-get($colors, $color);
+    @return get-specific-color($color, $scoped, $hue);
+
+  } @else {
+    @return black;
+  }
+}
+
+@function get-specific-color($color, $scoped, $hue) {
+  @if map-has-key($scoped, $hue) {
+    @return map-get($scoped, $hue);
+
+  } @else {
+    @return map-get($scoped, $color);
+  }
+}
+
+$colors: (
+  sky: (
+    lighter: #F9FAFB,
+    light: #F4F6F8,
+    sky: #DFE3E8,
+    dark: #C4CDD5,
+    darker: #b0bbc4
+  ),
+  ink: (
+    lightest: #919EAB,
+    lighter: #637381,
+    light: #454F5B,
+    ink: #212B36
+  ),
+  yellow: (
+    yellow: #FFD100,
+  ),
+);
