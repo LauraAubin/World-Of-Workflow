@@ -2,9 +2,10 @@ import React from 'react';
 
 import { Quest as QuestType } from '../../../../types';
 
-import Frame from '../../../../art/QuestList/Frame.png';
 import Image from '../../../Image';
 import Quest from '../Quest';
+
+import Frame from '../../../../art/QuestList/Frame.png';
 
 import './QuestSection.scss';
 
@@ -25,11 +26,12 @@ export default function QuestSection({
 
   return (
     <>
-      <Image text={questSectionTitle(title)} textX={25} textY={12}>
-        <div className='questSectionImage'>
-          <img src={Frame} className='questSectionImageFrame' />
-        </div>
-      </Image>
+      <div className='questSectionImage'>
+        <Image
+          image={{ element: Frame, height: 65 }}
+          overlay={{ element: questSectionTitle(title), x: 25, y: 12 }}
+        />
+      </div>
       {records.map(record => (
         <Quest record={record} setSelectedQuest={setSelectedQuest} />
       ))}
