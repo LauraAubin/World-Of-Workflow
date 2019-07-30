@@ -2,6 +2,11 @@ import React from 'react';
 
 import { Quest as QuestType } from '../../../../types';
 
+import Image from '../../../Image';
+
+import QuestIconBlank from '../../../../art/QuestList/QuestIconBlank.png';
+import QuestionMark from '../../../../art/QuestList/QuestionMark.png';
+
 import './Quest.scss';
 
 interface Props {
@@ -16,10 +21,14 @@ export default function Quest({ record, setSelectedQuest }: Props) {
       key={record.created_at}
       onClick={() => setSelectedQuest(record)}
     >
-      <div>?</div>
+      <Image
+        image={{ element: QuestIconBlank, height: 22 }}
+        overlay={{ element: QuestionMark, height: 11, x: 7, y: 1 }}
+      />
+
       <div className='questDetails'>
-        <div>{record.title}</div>
-        <div>{record.questObjectives}</div>
+        <div className="title">{record.title}</div>
+        <div className="objective">{record.questObjectives}</div>
       </div>
     </div>
   );

@@ -1,12 +1,32 @@
 @import '../../../../utilities/spacing.scss';
+@import '../../../../utilities/colors.scss';
+
+$fontSize: 13px;
 
 .questContainer {
   display: flex;
+  align-items: flex-start;
   flex-wrap: nowrap;
-  padding: spacing(tight) 0;
+  padding: spacing(tight);
   cursor: pointer;
 }
 
 .questDetails {
   flex-direction: column;
+  padding: spacing(extraTight) 0 0 spacing(extraTight);
+}
+
+.title {
+  font-family: 'Friz Quadrata';
+  font-size: $fontSize;
+  color: color(yellow, dark);
+  text-shadow: 1px 1px 0 color(ink, light);
+  padding-bottom: spacing(extraTight);
+}
+
+.objective {
+  font-family: 'Friz Quadrata';
+  font-size: $fontSize;
+  color: white;
+  text-shadow: 1px 1px 0 color(ink, light);
 }
