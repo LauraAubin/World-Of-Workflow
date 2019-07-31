@@ -1,8 +1,32 @@
-.QuestContainer {
+@import '../../../utilities/spacing.scss';
+
+.layout {
   display: flex;
   flex-direction: column;
+  height: 445px;
 }
 
-.Quest {
-  border: solid 1px black;
+.questHeaderActions {
+  height: 80px;
+}
+
+.questContentArea {
+  margin: spacing() 45px spacing() 40px;
+  height: 305px;
+}
+
+.questContentHeaderText {
+  font-family: 'Morpheus';
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.questContentDescription {
+  font-family: 'Friz Quadrata';
+  font-size: 13px;
+  padding: spacing(extraTight) 0 spacing(tight) 0;
+}
+
+.questActionButtons {
+  margin: 0 12px 0 25px;
 }
