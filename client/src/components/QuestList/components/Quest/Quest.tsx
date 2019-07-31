@@ -28,7 +28,7 @@ export default function Quest({ record, setSelectedQuest }: Props) {
 
       <div className='questDetails'>
         <div className="title">{record.title}</div>
-        <div className="objective">{record.questObjectives}</div>
+        <div className="objective">- {record.questObjectives}</div>
       </div>
     </div>
   );
