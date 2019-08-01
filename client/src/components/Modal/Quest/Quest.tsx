@@ -4,8 +4,9 @@ import { Quest as QuestType } from '../../../types';
 import { update } from '../../../utilities/Database';
 
 import Image from '../../Image';
+import Button from '../../Button';
 
-import TwoButtons from '../../../art/Quest/Greeting/TwoButtons.png';
+import OneButtonQuest from '../../../art/Quest/Greeting/OneButtonQuest.png';
 
 import './Quest.scss';
 
@@ -44,13 +45,18 @@ export default function Quest({ quest, setShownModal }: Props) {
 
       {contentMarkup}
 
-      <div className='questActionButtons'>
-        <button onClick={completeQuest}>Complete</button>
+      <div className='questButton'>
+        <Button width={115} onClick={completeQuest}>
+          Complete Quest
+        </Button>
       </div>
     </div>
   );
 
   return (
-    <Image image={{ element: TwoButtons }} overlay={{ element: questMarkup }} />
+    <Image
+      content={{ element: OneButtonQuest }}
+      overlay={{ element: questMarkup }}
+    />
   );
 }
