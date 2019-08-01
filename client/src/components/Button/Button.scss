@@ -1,0 +1,21 @@
+@import '../../utilities/colors.scss';
+
+.Button {
+  display: flex;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 11px;
+  font-family: 'Friz Quadrata';
+  color: color(yellow);
+  text-shadow: 1px 1px 0 color(ink);
+
+  &:hover {
+    color: white;
+    text-shadow: none;
+
+    &:active {
+      color: color(yellow);
+    }
+  }
+}
