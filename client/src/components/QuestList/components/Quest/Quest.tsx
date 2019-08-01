@@ -22,7 +22,7 @@ export default function Quest({ record, setSelectedQuest }: Props) {
       onClick={() => setSelectedQuest(record)}
     >
       <Image
-        image={{ element: QuestIconBlank, height: 22 }}
+        content={{ element: QuestIconBlank, height: 22 }}
         overlay={{ element: QuestionMark, height: 11, x: 7, y: 1 }}
       />
 

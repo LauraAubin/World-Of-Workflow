@@ -3,7 +3,7 @@ import React from 'react';
 import './Image.scss';
 
 interface Props {
-  image: { element: string; height?: number };
+  content: { element: string; height?: number, width?: number };
   overlay?: {
     element: string | object;
     height?: number;
@@ -12,15 +12,16 @@ interface Props {
   };
 }
 
-export default function Image({ image, overlay }: Props) {
+export default function Image({ content, overlay }: Props) {
   const imageStyle = {
-    height: `${image.height}.px`
+    height: `${content.height}.px`,
+    width: `${content.width}.px`
   };
 
   return (
     <div className='imageContainer'>
       {overlay && overlayElement(overlay)}
-      <img src={image.element} style={imageStyle} />
+      <img src={content.element} style={imageStyle} />
     </div>
   );
 }

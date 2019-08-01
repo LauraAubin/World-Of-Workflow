@@ -28,7 +28,7 @@ export default function QuestSection({
     <>
       <div className='questSectionImage'>
         <Image
-          image={{ element: Frame, height: 65 }}
+          content={{ element: Frame, height: 65 }}
           overlay={{ element: questSectionTitle(title), x: 25, y: 12 }}
         />
       </div>
