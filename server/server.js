@@ -53,6 +53,21 @@ app.post('/update', (request, response) => {
   writeFile(databaseContents);
 });
 
+app.post('/deleteRecords', (request, response) => {
+  const { where } = request.body;
+
+  const databaseContents = JSON.parse(readFile());
+  const whereConditions = JSON.stringify(where);
+
+  const dropBrackets = string => string.substring(1, string.length - 1);
+
+  const filterRecords = databaseContents.filter(
+    record => !JSON.stringify(record).includes(dropBrackets(whereConditions))
+  );
+
+  writeFile(filterRecords);
+});
+
 function readFile() {
   return fs.readFileSync('./DB.js', 'utf8');
 }

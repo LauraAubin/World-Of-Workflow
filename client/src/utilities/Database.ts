@@ -26,3 +26,9 @@ export async function update(record: {}, where: { [key in any]: columnTypes }) {
     resp.json()
   );
 }
+
+export async function deleteRecords(where: { [key in any]: columnTypes }) {
+  return await fetchRequest('post', 'deleteRecords', { where }).then(resp =>
+    resp.json()
+  );
+}

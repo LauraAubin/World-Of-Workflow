@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { writeTo } from '../../../utilities/Database';
+import { writeTo, deleteRecords } from '../../../utilities/Database';
 
 import DateInput from '../../DateInput';
 
@@ -12,6 +12,7 @@ export default function GM() {
   const [description, setDescription] = useState('');
   const [questObjectives, setQuestObjectives] = useState('');
   const [dueDate, setDueDate] = useState(new Date());
+  const [test, setTest] = useState(false);
 
   const handleChange = event => {
     const name = event.target.name;
@@ -31,7 +32,7 @@ export default function GM() {
       questObjectives,
       dueDate,
       completed: false,
-      test: true
+      test
     });
   };
 
@@ -69,7 +70,18 @@ export default function GM() {
         <DateInput onChange={setDueDate} />
       </div>
 
+      <div>
+        <input type='checkbox' onClick={() => setTest(!test)} />
+        Test
+      </div>
+
       <button onClick={submit}>Submit</button>
+
+      <br />
+
+      <button onClick={() => deleteRecords({ test: true })}>
+        Dump all test data
+      </button>
     </div>
   );
 }
