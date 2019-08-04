@@ -7,7 +7,13 @@
 }
 
 .questHeaderActions {
+  display: flex;
+  justify-content: flex-end;
   height: 80px;
+}
+
+.minimizeButton {
+  margin: 21px 5px 0 0;
 }
 
 .questContentArea {
@@ -27,6 +33,6 @@
   padding: spacing(extraTight) 0 spacing(tight) 0;
 }
 
-.questButton {
-  margin: 0 0 0 18px;
+.actionButton {
+  margin: 0 0 2px 22px;
 }

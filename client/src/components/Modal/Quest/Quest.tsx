@@ -41,11 +41,20 @@ export default function Quest({ quest, setShownModal }: Props) {
 
   const questMarkup = (
     <div className='layout' id='mainElement'>
-      <div className='questHeaderActions'>block</div>
+      <div className='questHeaderActions'>
+        <div className='minimizeButton'>
+          <Button
+            minimize
+            width={18}
+            height={18}
+            onClick={() => setShownModal(undefined)}
+          />
+        </div>
+      </div>
 
       {contentMarkup}
 
-      <div className='questButton'>
+      <div className='actionButton'>
         <Button width={115} onClick={completeQuest}>
           Complete Quest
         </Button>
