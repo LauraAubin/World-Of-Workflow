@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { writeTo, deleteRecords } from '../../../utilities/Database';
+import { writeTo, deleteRecords } from '../../../../utilities/Database';
 
 import DateInput from '../../DateInput';
 

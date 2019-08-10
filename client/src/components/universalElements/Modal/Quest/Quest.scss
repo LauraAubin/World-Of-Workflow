@@ -1,11 +1,11 @@
-@import '../../../utilities/spacing.scss';
+@import '../../../../utilities/spacing.scss';
 
 .quest {
   position: relative;
   height: 440px;
   width: 355px;
 
-  background-image: url('../../../art/Quest/Greeting/OneButtonQuest.png');
+  background-image: url('../../../../art/Quest/Greeting/OneButtonQuest.png');
   background-repeat: no-repeat;
   background-size: cover;
 }

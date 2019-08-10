@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Quest as QuestType } from '../../../../types';
 
-import Image from '../../../Image';
+import Image from '../../../universalElements/Image';
 import Quest from '../Quest';
 
 import Frame from '../../../../art/QuestList/Frame.png';

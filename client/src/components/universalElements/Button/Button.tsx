@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import Image from '../Image';
 
-import Button from '../../art/Buttons/Button.png';
-import ButtonHover from '../../art/Buttons/ButtonHover.png';
-import ButtonPressed from '../../art/Buttons/ButtonPressed.png';
-import Minimize from '../../art/Buttons/Minimize.png';
+import Button from '../../../art/Buttons/Button.png';
+import ButtonHover from '../../../art/Buttons/ButtonHover.png';
+import ButtonPressed from '../../../art/Buttons/ButtonPressed.png';
+import Minimize from '../../../art/Buttons/Minimize.png';
 
 import './Button.scss';
 

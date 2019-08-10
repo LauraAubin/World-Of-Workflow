@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { simpleDate } from '../../utilities/Date';
-import { TODAY } from '../../utilities/Date';
+import { simpleDate } from '../../../utilities/Date';
+import { TODAY } from '../../../utilities/Date';
 
 interface Props {
   onChange(Date): void;

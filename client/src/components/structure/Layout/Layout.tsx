@@ -7,7 +7,7 @@ import autobind from 'autobind-decorator';
 import Actionbar from '../../Actionbar';
 import ActionItems from '../../ActionItems';
 import Minimap from '../../Minimap';
-import Modal from '../../Modal';
+import Modal from '../../universalElements/Modal';
 import Nameplate from '../../Nameplate';
 import QuestList from '../../QuestList';
 

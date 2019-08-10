@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Quest as QuestType, ModalTypes } from '../../types';
+import { Quest as QuestType, ModalTypes } from '../../../types';
 
 import GM from './GM';
 import Quest from './Quest';
