@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Layout from './structure/Layout';
+import Layout from './components/structure/Layout';
 
 import {hideWindow} from './utilities/HideWindow';
 

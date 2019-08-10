@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { Quest, ModalTypes } from '../../types';
+import { Quest, ModalTypes } from '../../../types';
 
 import autobind from 'autobind-decorator';
 
-import Actionbar from '../../components/Actionbar';
-import ActionItems from '../../components/ActionItems';
-import Minimap from '../../components/Minimap';
-import Modal from '../../components/Modal';
-import Nameplate from '../../components/Nameplate';
-import QuestList from '../../components/QuestList';
+import Actionbar from '../../Actionbar';
+import ActionItems from '../../ActionItems';
+import Minimap from '../../Minimap';
+import Modal from '../../Modal';
+import Nameplate from '../../Nameplate';
+import QuestList from '../../QuestList';
 
 import Grid from '../Grid';
 
