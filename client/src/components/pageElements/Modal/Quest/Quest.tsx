@@ -3,7 +3,7 @@ import React from 'react';
 import { Quest as QuestType } from '../../../../types';
 import { update } from '../../../../utilities/Database';
 
-import Button from '../../Button';
+import Button from '../../../universalElements/Button';
 
 import './Quest.scss';
 

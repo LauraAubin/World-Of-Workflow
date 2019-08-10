@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { writeTo, deleteRecords } from '../../../../utilities/Database';
 
-import DateInput from '../../DateInput';
+import DateInput from '../../../universalElements/DateInput';
 
 import './GM.scss';
 
