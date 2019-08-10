@@ -1,15 +1,20 @@
 @import '../../../utilities/colors.scss';
 
-.Button {
-  display: flex;
+$minimizeButtonSize: 18px;
+
+.button {
   padding: 0;
   background: none;
   border: none;
   outline: none;
+
   font-size: 11px;
   font-family: 'Friz Quadrata';
   color: color(yellow);
   text-shadow: 1px 1px 0 color(ink);
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
   &:hover {
     color: white;
@@ -19,4 +24,14 @@
       color: color(yellow);
     }
   }
+}
+
+.minimize {
+  height: $minimizeButtonSize;
+  width: $minimizeButtonSize;
+}
+
+.completeQuest {
+  height: 25px;
+  width: 115px;
 }

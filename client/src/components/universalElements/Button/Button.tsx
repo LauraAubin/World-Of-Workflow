@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Image from '../Image';
+import classNames from 'classnames';
 
 import Button from '../../../art/Buttons/Button.png';
 import ButtonHover from '../../../art/Buttons/ButtonHover.png';
@@ -11,29 +11,23 @@ import './Button.scss';
 
 interface Props {
   children?: string;
+  /* A button with an x, used for close actions */
   minimize?: boolean;
-  width?: number;
-  height?: number;
+  /* A button saying "Complete quest" */
+  completeQuest?: boolean;
   onClick(): void;
 }
 
-export function Btn({
-  minimize,
-  width = 100,
-  height = 25,
-  onClick,
-  children
-}: Props) {
+export function Btn({ minimize, completeQuest, onClick, children }: Props) {
   const defaultImage = (minimize && Minimize) || Button;
 
   const [image, setImage] = useState(defaultImage);
 
-  const overlayMarkup = children
-    ? {
-        element: <span>{children}</span>,
-        y: 8
-      }
-    : undefined;
+  const styles = classNames(
+    'button',
+    minimize && 'minimize',
+    completeQuest && 'completeQuest'
+  );
 
   return (
     <button
@@ -42,12 +36,10 @@ export function Btn({
       onMouseDown={() => setImage((minimize && Minimize) || ButtonPressed)}
       onMouseUp={() => setImage((minimize && Minimize) || Button)}
       onMouseLeave={() => setImage((minimize && Minimize) || Button)}
-      className='Button'
+      className={styles}
+      style={{ backgroundImage: `url(${image})` }}
     >
-      <Image
-        content={{ element: image, width, height }}
-        overlay={overlayMarkup}
-      />
+      {children}
     </button>
   );
 }

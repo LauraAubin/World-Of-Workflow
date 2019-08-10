@@ -39,18 +39,13 @@ export default function Quest({ quest, setShownModal }: Props) {
   return (
     <div className='quest' id='mainElement'>
       <div className='closeButton'>
-        <Button
-          minimize
-          width={18}
-          height={18}
-          onClick={() => setShownModal(undefined)}
-        />
+        <Button minimize onClick={() => setShownModal(undefined)} />
       </div>
 
       <div className='contentArea'>{contentMarkup}</div>
 
       <div className='completeButton'>
-        <Button width={115} onClick={completeQuest}>
+        <Button completeQuest onClick={completeQuest}>
           Complete Quest
         </Button>
       </div>
