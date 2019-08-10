@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ModalTypes } from '../../types';
+import { ModalTypes } from '../../../types';
 
 interface Props {
   setShownModal(ModalTypes): void;

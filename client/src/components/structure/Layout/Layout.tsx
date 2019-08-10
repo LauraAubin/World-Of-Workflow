@@ -4,12 +4,12 @@ import { Quest, ModalTypes } from '../../../types';
 
 import autobind from 'autobind-decorator';
 
-import Actionbar from '../../Actionbar';
-import ActionItems from '../../ActionItems';
-import Minimap from '../../Minimap';
+import Actionbar from '../../pageElements/Actionbar';
+import ActionItems from '../../pageElements/ActionItems';
+import Minimap from '../../pageElements/Minimap';
 import Modal from '../../universalElements/Modal';
-import Nameplate from '../../Nameplate';
-import QuestList from '../../QuestList';
+import Nameplate from '../../pageElements/Nameplate';
+import QuestList from '../../pageElements/QuestList';
 
 import Grid from '../Grid';
 

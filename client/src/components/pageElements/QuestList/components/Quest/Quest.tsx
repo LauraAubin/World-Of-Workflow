@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Quest as QuestType } from '../../../../types';
+import { Quest as QuestType } from '../../../../../types';
 
-import Image from '../../../universalElements/Image';
+import Image from '../../../../universalElements/Image';
 
-import QuestIconBlank from '../../../../art/QuestList/QuestIconBlank.png';
-import QuestionMark from '../../../../art/QuestList/QuestionMark.png';
+import QuestIconBlank from '../../../../../art/QuestList/QuestIconBlank.png';
+import QuestionMark from '../../../../../art/QuestList/QuestionMark.png';
 
 import './Quest.scss';
 

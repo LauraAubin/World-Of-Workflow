@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { readFrom } from '../../utilities/Database';
-import { simpleDate, TODAY, TOMORROW, NEXT_WEEK } from '../../utilities/Date';
-import { Quest as QuestType } from '../../types';
+import { readFrom } from '../../../utilities/Database';
+import { simpleDate, TODAY, TOMORROW, NEXT_WEEK } from '../../../utilities/Date';
+import { Quest as QuestType } from '../../../types';
 
 import QuestSection from './components/QuestSection';
 
