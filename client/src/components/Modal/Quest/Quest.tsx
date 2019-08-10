@@ -3,10 +3,7 @@ import React from 'react';
 import { Quest as QuestType } from '../../../types';
 import { update } from '../../../utilities/Database';
 
-import Image from '../../Image';
 import Button from '../../Button';
-
-import OneButtonQuest from '../../../art/Quest/Greeting/OneButtonQuest.png';
 
 import './Quest.scss';
 
@@ -27,45 +24,36 @@ export default function Quest({ quest, setShownModal }: Props) {
     <div className='questContentHeaderText'>{text}</div>
   );
   const descriptionText = text => (
-    <div className='questContentDescription'>{text}</div>
+    <div className='questContentDescriptionText'>{text}</div>
   );
 
   const contentMarkup = (
-    <div className='questContentArea'>
+    <>
       {headerText(title)}
       {descriptionText(description)}
       {headerText('Quest Objectives')}
       {descriptionText(questObjectives)}
-    </div>
+    </>
   );
 
-  const questMarkup = (
-    <div className='layout' id='mainElement'>
-      <div className='questHeaderActions'>
-        <div className='minimizeButton'>
-          <Button
-            minimize
-            width={18}
-            height={18}
-            onClick={() => setShownModal(undefined)}
-          />
-        </div>
+  return (
+    <div className='quest' id='mainElement'>
+      <div className='closeButton'>
+        <Button
+          minimize
+          width={18}
+          height={18}
+          onClick={() => setShownModal(undefined)}
+        />
       </div>
 
-      {contentMarkup}
+      <div className='contentArea'>{contentMarkup}</div>
 
-      <div className='actionButton'>
+      <div className='completeButton'>
         <Button width={115} onClick={completeQuest}>
           Complete Quest
         </Button>
       </div>
     </div>
-  );
-
-  return (
-    <Image
-      content={{ element: OneButtonQuest }}
-      overlay={{ element: questMarkup }}
-    />
   );
 }
