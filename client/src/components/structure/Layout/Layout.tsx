@@ -8,7 +8,7 @@ import Actionbar from '../../pageElements/Actionbar';
 import ActionItems from '../../pageElements/ActionItems';
 import Minimap from '../../pageElements/Minimap';
 import Modal from '../../pageElements/Modal';
-import Nameplate from '../../pageElements/Nameplate';
+import CharacterFrame from '../../pageElements/CharacterFrame';
 import QuestList from '../../pageElements/QuestList';
 
 import Grid from '../Grid';
@@ -59,7 +59,7 @@ export default class Layout extends React.Component<{}, State> {
           spanColumns={{ start: 1, end: 2 }}
           spanRows={{ start: 1, end: 2 }}
         >
-          <Nameplate />
+          <CharacterFrame />
         </Grid.Section>
 
         <Grid.Section

@@ -1,0 +1,66 @@
+@import '../../../utilities/colors.scss';
+
+$gravatarSize: 60px;
+
+.portraitFrame {
+  position: relative;
+  width: 220px;
+  height: 85px;
+
+  background-image: url('../../../art/CharacterFrame/PortraitFrame.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.gravatarImage {
+  position: relative;
+  top: 11px;
+  left: 14px;
+
+  width: $gravatarSize;
+  height: $gravatarSize;
+  border-radius: 50%;
+
+  background-image: url('https://s.gravatar.com/avatar/4dba733acf88e16eed06e2dfae2baf3a?s=80');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.flippedImage {
+  transform: scaleX(-1);
+}
+
+.name {
+  position: absolute;
+  top: 22px;
+  left: 130px;
+
+  font-family: 'Friz Quadrata';
+  color: color(yellow);
+  font-size: 13px;
+}
+
+.iconFrame {
+  position: absolute;
+  top: 50px;
+
+  width: 43px;
+  height: 37px;
+
+  background-image: url('../../../art/CharacterFrame/IconContainer.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.iconResting {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+
+  width: 28px;
+  height: 33px;
+
+  background-image: url('../../../art/CharacterFrame/RestingIcon.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
