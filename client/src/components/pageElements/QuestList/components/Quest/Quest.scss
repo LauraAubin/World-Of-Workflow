@@ -7,14 +7,36 @@ $fontSize: 13px;
   display: flex;
   align-items: flex-start;
   flex-wrap: nowrap;
+
   padding: spacing(tight);
   cursor: pointer;
 }
 
-.questDetails {
+.questIcon {
+  background-image: url('../../../../../art/QuestList/QuestIconBlank.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  width: 23px;
+  height: 22px;
+}
+
+.questIconSymbol {
+  position: relative;
+  top: 5px;
+  left: 7px;
+
+  background-image: url('../../../../../art/QuestList/QuestionMark.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  width: 8px;
+  height: 11px;
+}
+
+.questDetailsText {
   flex-direction: column;
   padding: spacing(extraTight) 0 0 spacing(extraTight);
-  z-index: 1;
 }
 
 .title {
@@ -22,6 +44,7 @@ $fontSize: 13px;
   font-size: $fontSize;
   color: color(yellow, dark);
   text-shadow: 1px 1px 0 color(ink, light);
+
   padding-bottom: spacing(extraTight);
 }
 
