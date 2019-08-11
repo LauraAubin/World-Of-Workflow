@@ -21,17 +21,15 @@ export default function QuestSection({
   setSelectedQuest
 }: Props) {
   const questSectionTitle = (title: string) => (
-    <div className='questTitle'>{title}</div>
+    <div className='sectionTitleText'>{title}</div>
   );
 
   return (
     <>
-      <div className='questSectionImage'>
-        <Image
-          content={{ element: Frame, height: 65 }}
-          overlay={{ element: questSectionTitle(title), x: 25, y: 12 }}
-        />
+      <div className='sectionHeaderSize'>
+        <div className='sectionHeader'>{questSectionTitle(title)}</div>
       </div>
+
       {records.map(record => (
         <Quest record={record} setSelectedQuest={setSelectedQuest} />
       ))}

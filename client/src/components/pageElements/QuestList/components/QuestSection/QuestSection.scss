@@ -3,16 +3,30 @@
 
 $questTitleFontSize: 15px;
 
-.questTitle {
+.sectionHeaderSize {
+  height: 35px;
+}
+
+.sectionHeader {
+  width: 270px;
+  height: 70px;
+
+  background-image: url('../../../../../art/QuestList/Frame.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  margin-top: 10px;
+}
+
+.sectionTitleText {
+  position: relative;
+  top: 14px;
+  left: 25px;
+
   font-family: 'Friz Quadrata';
   font-size: $questTitleFontSize;
   font-weight: 500;
   color: color(yellow);
   text-shadow: 1px 0 0 color(ink, light);
   cursor: default;
-}
-
-.questSectionImage {
-  height: 30px;
-  margin-top: spacing(tight);
 }
