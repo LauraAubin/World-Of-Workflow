@@ -54,7 +54,7 @@ export default class Layout extends React.Component<{}, State> {
     );
 
     return (
-      <Grid columns={`1fr 50% 1fr`} rows={`10% 1fr 10%`}>
+      <Grid columns={`1fr 50% 1fr`} rows={`20% 1fr 10%`}>
         <Grid.Section
           spanColumns={{ start: 1, end: 2 }}
           spanRows={{ start: 1, end: 2 }}

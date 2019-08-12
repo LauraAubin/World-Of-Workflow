@@ -1,4 +1,5 @@
 @import '../../../utilities/colors.scss';
+@import '../../../utilities/spacing.scss';
 
 $gravatarSize: 60px;
 
@@ -6,6 +7,7 @@ $gravatarSize: 60px;
   position: relative;
   width: 220px;
   height: 85px;
+  margin: spacing(extraTight);
 
   background-image: url('../../../art/CharacterFrame/PortraitFrame.png');
   background-repeat: no-repeat;

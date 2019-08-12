@@ -1,0 +1,42 @@
+@import '../../../utilities/spacing.scss';
+@import '../../../utilities/colors.scss';
+
+.minimapContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: spacing(extraTight);
+}
+
+.frame {
+  width: 160px;
+  height: 160px;
+
+  background-image: url('../../../art/Minimap/Minimap.png');
+  background-repeat: none;
+  background-size: 100% 100%;
+}
+
+.mapArea {
+  position: relative;
+  top: 35px;
+  left: 23px;
+
+  width: 115px;
+  height: 112px;
+  border-radius: 50%;
+
+  background-image: url('../../../art/Minimap/150ElginMap.png');
+  background-repeat: none;
+  background-size: cover;
+}
+
+.location {
+  position: absolute;
+  top: 11px;
+  right: 40px;
+
+  font-family: 'Friz Quadrata';
+  font-size: 11px;
+  color: color(green);
+  text-shadow: 1px 1px 0 color(ink);
+}

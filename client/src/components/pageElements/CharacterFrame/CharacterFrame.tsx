@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import './CharacterFrame.scss';
 
 interface Props {
- name?: string;
+  name?: string;
 }
 
-export default function CharacterFrame({name = 'Laura'}: Props) {
+export default function CharacterFrame({ name = 'Laura' }: Props) {
   const [flipGravatar] = useState(true);
 
   const gravatarStyles = classNames(
@@ -17,11 +17,11 @@ export default function CharacterFrame({name = 'Laura'}: Props) {
   );
 
   return (
-    <div className='portraitFrame'>
+    <div className='portraitFrame' id='mainElement'>
       <div className={gravatarStyles} />
-      <div className="name">{name}</div>
-      <div className="iconFrame">
-        <div className="iconResting"></div>
+      <div className='name'>{name}</div>
+      <div className='iconFrame'>
+        <div className='iconResting' />
       </div>
     </div>
   );
