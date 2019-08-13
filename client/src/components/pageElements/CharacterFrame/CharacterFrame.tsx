@@ -13,7 +13,7 @@ export default function CharacterFrame({ name = 'Laura' }: Props) {
 
   const gravatarStyles = classNames(
     'gravatarImage',
-    flipGravatar && 'flippedImage'
+    flipGravatar && 'flipGravatar'
   );
 
   return (

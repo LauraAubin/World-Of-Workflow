@@ -1,5 +1,6 @@
 @import '../../../utilities/colors.scss';
 @import '../../../utilities/spacing.scss';
+@import '../../../utilities/image.scss';
 
 $gravatarSize: 60px;
 
@@ -28,8 +29,8 @@ $gravatarSize: 60px;
   background-size: 100% 100%;
 }
 
-.flippedImage {
-  transform: scaleX(-1);
+.flipGravatar {
+  @include flippedX;
 }
 
 .name {

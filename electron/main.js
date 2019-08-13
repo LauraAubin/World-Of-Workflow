@@ -64,7 +64,7 @@ function hide() {
 function setFullWindowSize() {
   // default after maximize: 1680, 950
   let windowSize = mainWindow.getSize();
-  const myDockHeight = 80;
+  const myDockHeight = 70;
 
   mainWindow.setSize(windowSize[0], windowSize[1] + myDockHeight);
 }

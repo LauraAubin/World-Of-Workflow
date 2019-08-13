@@ -41,11 +41,9 @@ export default class Layout extends React.Component<{}, State> {
     const { showModal, selectedQuest } = this.state;
 
     const actionsMarkup = (
-      <div className='attachToBottom'>
+      <div className='attachToBottom' id='mainElement'>
         <div className='absoluteContainer'>
-          <div className='center'>
-            <Actionbar />
-          </div>
+          <Actionbar />
         </div>
         <div className='rightAlign'>
           <ActionItems setShownModal={this.setShownModal} />

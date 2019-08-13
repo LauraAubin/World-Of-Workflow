@@ -1,0 +1,20 @@
+@import '../../../utilities/image.scss';
+
+$defaultLocation: 250px;
+
+.griffin {
+  position: relative;
+
+  background-image: url('../../../art/Actionbar/Griffin.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.leftGriffin {
+  left: $defaultLocation;
+}
+
+.rightGriffin {
+  @include flippedX;
+  right: $defaultLocation;
+}

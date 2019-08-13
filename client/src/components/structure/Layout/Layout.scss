@@ -6,14 +6,12 @@
 }
 
 .absoluteContainer {
-  z-index: -1;
-  width: 100%;
-  position: absolute;
-}
-
-.center {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+
+  z-index: -1;
+  position: absolute;
 }
 
 .rightAlign {
