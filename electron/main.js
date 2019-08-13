@@ -24,7 +24,8 @@ function createWindow() {
     },
     frame: false,
     transparent: true,
-    hasShadow: false
+    hasShadow: false,
+    enableLargerThanScreen: true
   });
 
   mainWindow.loadURL('http://localhost:3000/');
@@ -32,6 +33,7 @@ function createWindow() {
   mainWindow.maximize();
   mainWindow.hide();
   app.dock.hide();
+  setFullWindowSize();
 
   toggleWithKeyboard();
 
@@ -57,4 +59,12 @@ function show() {
 function hide() {
   mainWindow.hide();
   appVisible = false;
+}
+
+function setFullWindowSize() {
+  // default after maximize: 1680, 950
+  let windowSize = mainWindow.getSize();
+  const myDockHeight = 80;
+
+  mainWindow.setSize(windowSize[0], windowSize[1] + myDockHeight);
 }
