@@ -16,7 +16,7 @@ export default function DateInput({ onChange }: Props) {
       : `${date} ${TODAY.getFullYear()}`;
 
     onChange(new Date(alwaysIncludeYear));
-  });
+  }, [date]);
 
   const handleChange = event => {
     setDate(event.target.value);
