@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Quest as QuestType } from '../../../../types';
-import { update } from '../../../../utilities/Database';
 
 import Button from '../../../universalElements/Button';
 
 import './Quest.scss';
+
+const { ipcRenderer } = window.require('electron');
 
 interface Props {
   quest: QuestType;
@@ -16,7 +17,11 @@ export default function Quest({ quest, setShownModal }: Props) {
   const { title, description, questObjectives } = quest;
 
   const completeQuest = () => {
-    update(quest, { completed: true });
+    ipcRenderer.send('update', {
+      record: quest,
+      where: { completed: true }
+    });
+
     setShownModal(undefined);
   };
 
