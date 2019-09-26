@@ -8,9 +8,11 @@ const OPERATORS = ['<', '>', '=='];
 const EXTENSIONS = ['and'];
 
 const APP_NAME = 'world-of-workflow';
+const DATABASE_NAME = 'database.js';
+
 const PATH_TO_DATABASE = isDev
-  ? './database.js'
-  : `./Applications/${APP_NAME}.app/Contents/database.js`;
+  ? `./${DATABASE_NAME}`
+  : `./Applications/${APP_NAME}.app/Contents/${DATABASE_NAME}`;
 
 let mainWindow;
 let appVisible = false;
@@ -112,7 +114,7 @@ function createWindow() {
   setFullWindowSize();
 
   toggleWithKeyboard();
-  !isDev && setupDatabase();
+  setupDatabase();
 
   // mainWindow.setIgnoreMouseEvents(true, {forward: true})
   // mainWindow.webContents.openDevTools();
@@ -147,6 +149,12 @@ function setFullWindowSize() {
 }
 
 function setupDatabase() {
+  if (isDev) {
+    if (!fs.existsSync(`./${DATABASE_NAME}`))
+      fs.writeFileSync(`./${DATABASE_NAME}`, '[]', 'utf8');
+    return;
+  }
+
   if (!fs.existsSync(`./Applications/${APP_NAME}.app`)) {
     databaseAvailable = false;
   } else {
