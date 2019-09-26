@@ -19,7 +19,9 @@ export default function Modal({
   setShownModal
 }: Props) {
   const renderModal =
-    (showModal == ModalTypes.GM && <GM />) ||
+    (showModal == ModalTypes.GM && (
+      <GM closeModal={() => setShownModal(undefined)} />
+    )) ||
     (showModal == ModalTypes.Quest && selectedQuest && (
       <Quest quest={selectedQuest} setShownModal={setShownModal} />
     ));

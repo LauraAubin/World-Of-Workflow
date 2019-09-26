@@ -2,23 +2,62 @@
   "name": "world-of-workflow",
   "description": "An agenda in the style of World of Warcraft",
   "version": "1.0.0",
+  "author": "Laura Aubin",
+  "repository": "https://github.com/LauraAubin/World-Of-Workflow",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "dependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.10",
+    "@types/react": "^16.7.7",
+    "@types/react-dom": "^16.0.11",
+    "autobind-decorator": "^2.4.0",
+    "classnames": "^2.2.6",
+    "moment": "^2.24.0",
+    "node-sass": "^4.10.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "typescript": "^3.5.0",
+    "electron-is-dev": "0.3.0"
+  },
+  "devDependencies": {
+    "electron": "^5.0.2",
+    "concurrently": "^3.5.0",
+    "wait-on": "^3.2.0",
+    "electron-builder": "^21.2.0"
+  },
   "scripts": {
-    "setup-client": "cd ./client && npm install",
-    "setup-server": "cd ./server && npm install",
-    "setup-electron": "cd ./electron && npm install",
-    "create-DB-file": "cd ./server && touch DB.js && [ -s DB.js ] || echo '[]' > DB.js",
-    "setup": "yarn setup-client && yarn setup-server && yarn setup-electron && yarn create-DB-file",
-    "start": "cd ./electron && yarn start"
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "start-electron": "electron .",
+    "build": "yarn react-build && yarn electron-builder",
+    "start": "concurrently \"BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && yarn start-electron\""
   },
   "license": "ISC",
-  "repository": "https://github.com/LauraAubin/World-Of-Workflow",
-  "author": "LauraAubin",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "keywords": [
     "World of Warcraft",
     "Electron",
     "React",
-    "Express",
     "NodeJS",
     "FileSystem"
-  ]
+  ],
+  "proxy": "http://localhost:5000/"
 }

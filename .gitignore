@@ -1,4 +1,10 @@
 package-lock.json
 node_modules
 .DS_Store
-DB.js
+
+# Build application
+build
+dist
+
+# Database
+# database.js

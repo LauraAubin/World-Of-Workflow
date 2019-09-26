@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { readFrom } from '../../../utilities/Database';
-import { simpleDate, TODAY, TOMORROW, NEXT_WEEK } from '../../../utilities/Date';
+import {
+  simpleDate,
+  TODAY,
+  TOMORROW,
+  NEXT_WEEK
+} from '../../../utilities/Date';
 import { Quest as QuestType } from '../../../types';
 
 import QuestSection from './components/QuestSection';
 
 import './QuestList.scss';
+
+const { ipcRenderer } = window.require('electron');
 
 interface Props {
   setSelectedQuest(selectedQuest): void;
@@ -15,11 +21,21 @@ interface Props {
 export default function QuestList({ setSelectedQuest }: Props) {
   const [records, setRecords] = useState<QuestType[]>([]);
 
-  readFrom('quest').then(data => setRecords(data.records));
+  useEffect(() => {
+    ipcRenderer.send('readFrom', { table: 'quest' });
+    ipcRenderer.once('readFromReply', (event, args) => {
+      const newRecords = JSON.stringify(records) !== JSON.stringify(args);
+
+      if (newRecords) {
+        setRecords(args);
+      }
+    });
+  });
 
   const questSection = (title: string, records: QuestType[]) =>
     records.length > 0 && (
       <QuestSection
+        key={title}
         title={title}
         records={records}
         setSelectedQuest={setSelectedQuest}

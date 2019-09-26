@@ -1,6 +1,8 @@
 # World Of Workflow
 **A to-do list in the style of World of Warcraft.**
 
+Toggle visibility with `option + command`, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
+
 ## Setup
 
 From the root folder run,
@@ -9,19 +11,19 @@ From the root folder run,
 $ npm install
 ```
 
-Install dependencies with,
-
-```
-$ yarn setup
-```
-
-## Launch application
+## Launch application in development
 
 ```
 $ yarn start
 ```
 
-Toggle visibility with `option + command`, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
+## Create an application
+
+```
+yarn build
+```
+
+You can find the app within the `./dist/mac` folder; Note that this is only configured for macOS.
 
 ## Disclaimer
 

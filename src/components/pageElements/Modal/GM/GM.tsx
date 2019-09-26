@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
-import { writeTo, deleteRecords } from '../../../../utilities/Database';
-
 import DateInput from '../../../universalElements/DateInput';
 
 import './GM.scss';
 
-export default function GM() {
+const { ipcRenderer } = window.require('electron');
+
+interface Props {
+  closeModal(): void;
+}
+
+export default function GM({ closeModal }: Props) {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
@@ -25,15 +29,31 @@ export default function GM() {
   };
 
   const submit = () => {
-    writeTo('quest', {
-      title,
-      location,
-      description,
-      questObjectives,
-      dueDate,
-      completed: false,
-      test
+    ipcRenderer.send('writeTo', {
+      table: 'quest',
+      contents: {
+        title,
+        location,
+        description,
+        questObjectives,
+        dueDate,
+        completed: false,
+        test
+      }
     });
+
+    closeModal();
+  };
+
+  const deleteRecords = condition => {
+    ipcRenderer.send('deleteRecords', {
+      where: condition
+    });
+  };
+
+  const dumpTestData = () => {
+    deleteRecords({ test: true });
+    closeModal();
   };
 
   return (
@@ -79,9 +99,7 @@ export default function GM() {
 
       <br />
 
-      <button onClick={() => deleteRecords({ test: true })}>
-        Dump all test data
-      </button>
+      <button onClick={dumpTestData}>Dump all test data</button>
     </div>
   );
 }
