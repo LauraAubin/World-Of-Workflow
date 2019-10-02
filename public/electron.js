@@ -125,6 +125,14 @@ function createWindow() {
 }
 
 function toggleWithKeyboard() {
+  if (isDev) {
+    globalShortcut.register('Option + Tab', () => {
+      appVisible ? hide() : show();
+    });
+
+    return;
+  }
+
   globalShortcut.register('Option + Space', () => {
     appVisible ? hide() : show();
   });
