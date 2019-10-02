@@ -171,14 +171,6 @@ function setupDatabase() {
   }
 }
 
-function splitPath(path) {
-  const breakPath = path.split('/');
-  breakPath.shift();
-  breakPath[0] = './' + breakPath[0];
-
-  return breakPath;
-}
-
 // -------------- Database --------------
 
 function readFile() {
@@ -268,14 +260,16 @@ function rightSideOfExpression(expression, operator) {
 }
 
 function indexOfObject(array, object) {
-  const orderedObject = object => JSON.stringify(orderObject(object));
+  const orderedObject = object => JSON.stringify(orderKeys(object));
 
   for (let i = 0; i < array.length; i++) {
     if (orderedObject(array[i]) === orderedObject(object)) return i;
   }
+
+  return -1;
 }
 
-function orderObject(unorderedObject) {
+function orderKeys(unorderedObject) {
   const ordered = {};
 
   Object.keys(unorderedObject)
@@ -283,4 +277,6 @@ function orderObject(unorderedObject) {
     .forEach(function(key) {
       ordered[key] = unorderedObject[key];
     });
+
+  return ordered;
 }
