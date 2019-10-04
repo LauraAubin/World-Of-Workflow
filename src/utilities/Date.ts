@@ -23,6 +23,13 @@ export function simpleDate(d: Date) {
   return `${month} ${day}, ${year}`;
 }
 
+export const YESTERDAY = new Date(
+  moment()
+    .subtract('1', 'd')
+    .toDate()
+);
+
+
 export const TODAY = new Date();
 
 export const TOMORROW = new Date(

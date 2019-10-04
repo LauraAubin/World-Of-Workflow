@@ -4,6 +4,7 @@ import {
   simpleDate,
   TODAY,
   TOMORROW,
+  YESTERDAY,
   NEXT_WEEK
 } from '../../../utilities/Date';
 import { Quest as QuestType } from '../../../types';
@@ -82,7 +83,7 @@ export default function QuestList({ setSelectedQuest }: Props) {
   return (
     <div className='alignRight'>
       <div className='stack' id='mainElement'>
-        {renderPreviousQuests('Overdue', TODAY)}
+        {renderPreviousQuests('Overdue', YESTERDAY)}
         {renderDailyQuests('Today', TODAY)}
         {renderDailyQuests('Tomorrow', TOMORROW)}
         {renderQuestRange('This week', TOMORROW, NEXT_WEEK)}
