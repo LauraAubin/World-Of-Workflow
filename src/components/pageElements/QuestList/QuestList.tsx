@@ -71,9 +71,18 @@ export default function QuestList({ setSelectedQuest }: Props) {
     return questSection(title, filterRecords);
   };
 
+  const renderPreviousQuests = (title: string, before: Date) => {
+    const filterRecords = records.filter(
+      record => new Date(record.dueDate) < before && !record.completed
+    );
+
+    return questSection(title, filterRecords);
+  };
+
   return (
     <div className='alignRight'>
       <div className='stack' id='mainElement'>
+        {renderPreviousQuests('Overdue', TODAY)}
         {renderDailyQuests('Today', TODAY)}
         {renderDailyQuests('Tomorrow', TOMORROW)}
         {renderQuestRange('This week', TOMORROW, NEXT_WEEK)}
