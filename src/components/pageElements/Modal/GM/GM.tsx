@@ -22,10 +22,10 @@ export default function GM({ closeModal }: Props) {
     const name = event.target.name;
     const value = event.target.value;
 
-    name == 'title' && setTitle(value);
-    name == 'location' && setLocation(value);
-    name == 'description' && setDescription(value);
-    name == 'questObjectives' && setQuestObjectives(value);
+    name === 'title' && setTitle(value);
+    name === 'location' && setLocation(value);
+    name === 'description' && setDescription(value);
+    name === 'questObjectives' && setQuestObjectives(value);
   };
 
   const submit = () => {

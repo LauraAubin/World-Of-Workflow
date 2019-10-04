@@ -45,7 +45,7 @@ export default function QuestList({ setSelectedQuest }: Props) {
   const renderDailyQuests = (title: string, dueDate: Date) => {
     const filterRecords = records.filter(
       record =>
-        simpleDate(new Date(record.dueDate)) == simpleDate(dueDate) &&
+        simpleDate(new Date(record.dueDate)) === simpleDate(dueDate) &&
         !record.completed
     );
 

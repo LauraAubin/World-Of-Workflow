@@ -7,10 +7,9 @@ declare global {
 }
 
 export function hideWindow(event: any) {
-  console.log(event)
   let hideWindow = true;
   event.path.map(object => {
-    if (object.id == 'mainElement') {
+    if (object.id === 'mainElement') {
       hideWindow = false;
     }
   });

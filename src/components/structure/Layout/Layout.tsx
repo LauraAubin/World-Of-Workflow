@@ -28,11 +28,11 @@ export default class Layout extends React.Component<{}, State> {
 
   componentDidMount() {
     document.addEventListener('keypress', event => {
-      if (event.key == 'g') {
+      if (event.key === 'g') {
         const element =
           document.activeElement && document.activeElement.nodeName;
 
-        element == 'BODY' && this.setShownModal(ModalTypes.GM);
+        element === 'BODY' && this.setShownModal(ModalTypes.GM);
       }
     });
   }
@@ -99,8 +99,8 @@ export default class Layout extends React.Component<{}, State> {
   public setShownModal(show: ModalTypes) {
     const { showModal } = this.state;
 
-    const questsNeverToggle = show == ModalTypes.Quest;
-    const alreadyShown = show == showModal;
+    const questsNeverToggle = show === ModalTypes.Quest; // since you can consecutively open a new quest modal
+    const alreadyShown = show === showModal;
 
     const toggleModal = alreadyShown && !questsNeverToggle ? undefined : show;
 
