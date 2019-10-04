@@ -96,7 +96,7 @@ function createWindow() {
       nodeIntegration: true
     },
     frame: false,
-    transparent: true,
+    vibrancy: 'dark',
     hasShadow: false,
     enableLargerThanScreen: true
   });
