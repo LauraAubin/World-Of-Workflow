@@ -15,7 +15,7 @@ $ npm install
 $ yarn start
 ```
 
-Toggle the app with `option + tab` in development.
+Toggle the app with <kbd>option</kbd> + <kbd>tab</kbd> in development.
 
 ### Create a runnable application
 
@@ -25,7 +25,7 @@ yarn build
 
 You can find the app within the `./dist/mac` folder. Note that this is only configured for macOS.
 
-Toggle visibility with `option + command`, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
+Toggle visibility with <kbd>option</kbd> + <kbd>command</kbd>, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
 
 ## Disclaimer
 
