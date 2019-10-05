@@ -1,5 +1,6 @@
-# World Of Workflow
-**A to-do list in the style of World of Warcraft.**
+<p align="center">
+  <img src="https://github.com/LauraAubin/World-Of-Workflow/raw/master/Screenshots/DemoWithLogo.png" />
+</p>
 
 ### Setup
 
