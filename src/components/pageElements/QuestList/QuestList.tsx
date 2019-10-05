@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import {
   simpleDate,
+  YESTERDAY,
   TODAY,
   TOMORROW,
-  YESTERDAY,
-  NEXT_WEEK
+  FRIDAY,
+  SATURDAY,
+  SUNDAY,
+  NEXT_FRIDAY,
 } from '../../../utilities/Date';
 import { Quest as QuestType } from '../../../types';
 
@@ -86,8 +89,10 @@ export default function QuestList({ setSelectedQuest }: Props) {
         {renderPreviousQuests('Overdue', YESTERDAY)}
         {renderDailyQuests('Today', TODAY)}
         {renderDailyQuests('Tomorrow', TOMORROW)}
-        {renderQuestRange('This week', TOMORROW, NEXT_WEEK)}
-        {renderRemainingQuests('Later', NEXT_WEEK)}
+        {renderQuestRange('This week', TOMORROW, FRIDAY)}
+        {renderQuestRange('This weekend', SATURDAY, SUNDAY)}
+        {renderQuestRange('Next week', SUNDAY, NEXT_FRIDAY)}
+        {renderRemainingQuests('Later', NEXT_FRIDAY)}
       </div>
     </div>
   );
