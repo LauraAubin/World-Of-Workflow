@@ -5,10 +5,12 @@ import {
   YESTERDAY,
   TODAY,
   TOMORROW,
+  AFTER_TOMORROW,
   FRIDAY,
   SATURDAY,
   SUNDAY,
-  NEXT_FRIDAY,
+  NEXT_MONDAY,
+  NEXT_FRIDAY
 } from '../../../utilities/Date';
 import { Quest as QuestType } from '../../../types';
 
@@ -59,8 +61,8 @@ export default function QuestList({ setSelectedQuest }: Props) {
   const renderQuestRange = (title: string, start: Date, end: Date) => {
     const filterRecords = records.filter(
       record =>
-        new Date(record.dueDate) > start &&
-        new Date(record.dueDate) < end &&
+        new Date(record.dueDate) >= start &&
+        new Date(record.dueDate) <= end &&
         !record.completed
     );
 
@@ -83,15 +85,18 @@ export default function QuestList({ setSelectedQuest }: Props) {
     return questSection(title, filterRecords);
   };
 
+  const todayIsBeforeThursday = new Date().getDay() < 4;
+
   return (
     <div className='alignRight'>
       <div className='stack' id='mainElement'>
         {renderPreviousQuests('Overdue', YESTERDAY)}
         {renderDailyQuests('Today', TODAY)}
         {renderDailyQuests('Tomorrow', TOMORROW)}
-        {renderQuestRange('This week', TOMORROW, FRIDAY)}
+        {todayIsBeforeThursday &&
+          renderQuestRange('This week', AFTER_TOMORROW, FRIDAY)}
         {renderQuestRange('This weekend', SATURDAY, SUNDAY)}
-        {renderQuestRange('Next week', SUNDAY, NEXT_FRIDAY)}
+        {renderQuestRange('Next week', NEXT_MONDAY, NEXT_FRIDAY)}
         {renderRemainingQuests('Later', NEXT_FRIDAY)}
       </div>
     </div>

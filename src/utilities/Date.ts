@@ -32,21 +32,34 @@ export const YESTERDAY = new Date(
 export const TODAY = new Date();
 export const TOMORROW = generateDate({ quantity: '1', value: 'd' });
 export const AFTER_TOMORROW = generateDate({ quantity: '2', value: 'd' });
-export const FRIDAY = generateDate(undefined, 'Sunday');
+export const FRIDAY = generateDate(undefined, 'Friday');
 export const SATURDAY = generateDate(undefined, 'Saturday');
 export const SUNDAY = generateDate({ quantity: '1', value: 'w' }, 'Sunday');
+export const NEXT_MONDAY = generateDate(
+  { quantity: '1', value: 'w' },
+  'Monday'
+);
 export const NEXT_FRIDAY = generateDate(
   { quantity: '1', value: 'w' },
   'Friday'
 );
 
-// Current minutes/seconds are preserved
 function generateDate(add?: { quantity: string; value: string }, day?: string) {
+  const simpleMomentDate = removeTimeFromDate(moment());
+
   const newMoment = add
-    ? moment().add(add.quantity as any, add.value)
-    : moment();
+    ? simpleMomentDate.add(add.quantity as any, add.value)
+    : simpleMomentDate;
 
   const specifyDay = day ? newMoment.day(day) : newMoment;
 
   return new Date(specifyDay.toDate());
+}
+
+function removeTimeFromDate(momentObject) {
+  return momentObject
+    .set('h', 0)
+    .set('m', 0)
+    .set('s', 0)
+    .set('ms', 0);
 }
