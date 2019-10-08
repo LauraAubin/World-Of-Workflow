@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { newDate } from '../../../../utilities/Date';
 import DateInput from '../../../universalElements/DateInput';
 
 import './GM.scss';
@@ -15,7 +16,7 @@ export default function GM({ closeModal }: Props) {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [questObjectives, setQuestObjectives] = useState('');
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(newDate());
   const [test, setTest] = useState(false);
 
   const handleChange = event => {

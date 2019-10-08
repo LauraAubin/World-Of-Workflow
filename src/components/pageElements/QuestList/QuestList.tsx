@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import {
-  simpleDate,
-  YESTERDAY,
-  TODAY,
-  TOMORROW,
-  AFTER_TOMORROW,
-  FRIDAY,
-  SATURDAY,
-  SUNDAY,
-  NEXT_MONDAY,
-  NEXT_FRIDAY
-} from '../../../utilities/Date';
+import { simpleDate, newDate } from '../../../utilities/Date';
 import { Quest as QuestType } from '../../../types';
 
 import QuestSection from './components/QuestSection';
@@ -85,19 +74,31 @@ export default function QuestList({ setSelectedQuest }: Props) {
     return questSection(title, filterRecords);
   };
 
-  const todayIsBeforeThursday = new Date().getDay() < 4;
+  const todayIsBeforeThursday = newDate().getDay() < 4;
 
   return (
     <div className='alignRight'>
       <div className='stack' id='mainElement'>
-        {renderPreviousQuests('Overdue', YESTERDAY)}
-        {renderDailyQuests('Today', TODAY)}
-        {renderDailyQuests('Tomorrow', TOMORROW)}
+        {renderPreviousQuests('Overdue', newDate('yesterday'))}
+        {renderDailyQuests('Today', newDate())}
+        {renderDailyQuests('Tomorrow', newDate('tomorrow'))}
         {todayIsBeforeThursday &&
-          renderQuestRange('This week', AFTER_TOMORROW, FRIDAY)}
-        {renderQuestRange('This weekend', SATURDAY, SUNDAY)}
-        {renderQuestRange('Next week', NEXT_MONDAY, NEXT_FRIDAY)}
-        {renderRemainingQuests('Later', NEXT_FRIDAY)}
+          renderQuestRange(
+            'This week',
+            newDate('after-tomorrow'),
+            newDate('friday')
+          )}
+        {renderQuestRange(
+          'This weekend',
+          newDate('saturday'),
+          newDate('sunday')
+        )}
+        {renderQuestRange(
+          'Next week',
+          newDate('next-monday'),
+          newDate('next-friday')
+        )}
+        {renderRemainingQuests('Later', newDate('next-friday'))}
       </div>
     </div>
   );

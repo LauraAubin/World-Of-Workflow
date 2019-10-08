@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-import { simpleDate } from '../../../utilities/Date';
-import { TODAY } from '../../../utilities/Date';
+import { simpleDate, newDate } from '../../../utilities/Date';
 
 interface Props {
   onChange(Date): void;
 }
 
 export default function DateInput({ onChange }: Props) {
-  const [date, setDate] = useState(simpleDate(TODAY));
+  const [date, setDate] = useState(simpleDate(newDate()));
 
   useEffect(() => {
     const alwaysIncludeYear = isYearProvided(date)
       ? date
-      : `${date} ${TODAY.getFullYear()}`;
+      : `${date} ${newDate().getFullYear()}`;
 
     onChange(new Date(alwaysIncludeYear));
   }, [date, onChange]);
@@ -39,4 +38,4 @@ function isYearProvided(date: string) {
   }
 
   return false;
-};
+}

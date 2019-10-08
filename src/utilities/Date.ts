@@ -23,26 +23,37 @@ export function simpleDate(d: Date) {
   return `${month} ${day}, ${year}`;
 }
 
-export const YESTERDAY = new Date(
-  moment()
-    .subtract('1', 'd')
-    .toDate()
-);
+export function newDate(
+  day?:
+    | 'yesterday'
+    | 'tomorrow'
+    | 'after-tomorrow'
+    | 'friday'
+    | 'saturday'
+    | 'sunday'
+    | 'next-monday'
+    | 'next-friday'
+) {
+  if (day === 'yesterday')
+    return new Date(
+      moment()
+        .subtract('1', 'd')
+        .toDate()
+    );
+  if (day === 'tomorrow') return generateDate({ quantity: '1', value: 'd' });
+  if (day === 'after-tomorrow')
+    return generateDate({ quantity: '2', value: 'd' });
+  if (day === 'friday') return generateDate(undefined, 'Friday');
+  if (day === 'saturday') return generateDate(undefined, 'Saturday');
+  if (day === 'sunday')
+    return generateDate({ quantity: '1', value: 'w' }, 'Sunday');
+  if (day === 'next-monday')
+    return generateDate({ quantity: '1', value: 'w' }, 'Monday');
+  if (day === 'next-friday')
+    return generateDate({ quantity: '1', value: 'w' }, 'Friday');
 
-export const TODAY = new Date();
-export const TOMORROW = generateDate({ quantity: '1', value: 'd' });
-export const AFTER_TOMORROW = generateDate({ quantity: '2', value: 'd' });
-export const FRIDAY = generateDate(undefined, 'Friday');
-export const SATURDAY = generateDate(undefined, 'Saturday');
-export const SUNDAY = generateDate({ quantity: '1', value: 'w' }, 'Sunday');
-export const NEXT_MONDAY = generateDate(
-  { quantity: '1', value: 'w' },
-  'Monday'
-);
-export const NEXT_FRIDAY = generateDate(
-  { quantity: '1', value: 'w' },
-  'Friday'
-);
+  return new Date();
+}
 
 function generateDate(add?: { quantity: string; value: string }, day?: string) {
   const simpleMomentDate = removeTimeFromDate(moment());
