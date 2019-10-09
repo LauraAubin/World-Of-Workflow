@@ -26,7 +26,7 @@ yarn build
 
 You can find the app within the `./dist/mac` folder. Note that this is only configured for macOS.
 
-Toggle visibility with <kbd>option</kbd> + <kbd>command</kbd>, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
+Toggle visibility with <kbd>option</kbd> + <kbd>space</kbd>, similar to [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(software)).
 
 ## Disclaimer
 
