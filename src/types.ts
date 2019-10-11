@@ -15,4 +15,8 @@ export enum ModalTypes {
   Quest = 'Quest'
 }
 
+export enum ActionItems {
+  GM = 'GM'
+}
+
 export type columnTypes = string | boolean | Date;

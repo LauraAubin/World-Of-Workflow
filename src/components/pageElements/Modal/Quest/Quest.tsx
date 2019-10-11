@@ -50,9 +50,7 @@ export default function Quest({ quest, setShownModal }: Props) {
       <div className='contentArea'>{contentMarkup}</div>
 
       <div className='completeButton'>
-        <Button completeQuest onClick={completeQuest}>
-          Complete Quest
-        </Button>
+        <Button onClick={completeQuest}>Complete Quest</Button>
       </div>
     </div>
   );
