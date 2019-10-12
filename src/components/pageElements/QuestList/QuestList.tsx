@@ -48,10 +48,15 @@ export default function QuestList({ setSelectedQuest }: Props) {
   };
 
   const renderQuestRange = (title: string, start: Date, end: Date) => {
+    const saturday = 6;
+    const sunday = 0;
+
     const filterRecords = records.filter(
       record =>
         new Date(record.dueDate) >= start &&
         new Date(record.dueDate) <= end &&
+        new Date(record.dueDate).getDay() !== saturday &&
+        new Date(record.dueDate).getDay() !== sunday &&
         !record.completed
     );
 
