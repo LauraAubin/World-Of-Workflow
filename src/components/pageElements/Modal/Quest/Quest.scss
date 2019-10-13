@@ -35,6 +35,12 @@
   padding: spacing(extraTight) 0 spacing(tight) 0;
 }
 
+.questDueDateText {
+  font-family: 'Friz Quadrata';
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 .completeButton {
   position: absolute;
   bottom: 5px;

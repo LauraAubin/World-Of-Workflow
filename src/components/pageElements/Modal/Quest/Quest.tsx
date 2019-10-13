@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import { Quest as QuestType } from '../../../../types';
 
@@ -14,7 +15,7 @@ interface Props {
 }
 
 export default function Quest({ quest, setShownModal }: Props) {
-  const { title, description, questObjectives } = quest;
+  const { title, description, dueDate, questObjectives } = quest;
 
   const completeQuest = () => {
     ipcRenderer.send('update', {
@@ -32,12 +33,15 @@ export default function Quest({ quest, setShownModal }: Props) {
     <div className='questContentDescriptionText'>{text}</div>
   );
 
+  const dueDateMarkup = moment(dueDate).format('dddd, MMMM D');
+
   const contentMarkup = (
     <>
       {headerText(title)}
       {descriptionText(description)}
       {headerText('Quest Objectives')}
       {descriptionText(questObjectives)}
+      <div className='questDueDateText'>Due on {dueDateMarkup}</div>
     </>
   );
 

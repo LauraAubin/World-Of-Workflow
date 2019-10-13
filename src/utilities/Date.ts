@@ -15,12 +15,8 @@ const MONTHS = [
   'December'
 ];
 
-export function simpleDate(d: Date) {
-  const day = d.getDate();
-  const month = MONTHS[d.getMonth()];
-  const year = d.getFullYear();
-
-  return `${month} ${day}, ${year}`;
+export function simpleDate(date: Date) {
+  return moment(date).format('MMMM D, Y');
 }
 
 export function newDate(
