@@ -1,20 +1,5 @@
 import moment from 'moment';
 
-const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-];
-
 export function simpleDate(date: Date) {
   return moment(date).format('MMMM D, Y');
 }

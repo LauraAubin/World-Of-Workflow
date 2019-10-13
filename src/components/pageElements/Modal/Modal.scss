@@ -2,8 +2,14 @@
 
 .ModalArea {
   display: flex;
-  justify-content: flex-start;
-  padding-left: spacing(loose);
   width: 100%;
   height: 100%;
+}
+
+.questGMArea {
+  justify-content: center;
+}
+
+.questModalArea {
+  padding-left: spacing(loose);
 }

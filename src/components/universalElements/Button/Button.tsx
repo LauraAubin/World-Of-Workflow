@@ -54,7 +54,7 @@ interface Props {
 export function Btn({ minimize, actionItem, onClick, children }: Props) {
   const determineImageToUse =
     (minimize && ImageKeys.minimize) ||
-    (actionItem == ActionItems.GM && ImageKeys.GMAction) ||
+    (actionItem === ActionItems.GM && ImageKeys.GMAction) ||
     ImageKeys.regular;
 
   const getImagePath = (state: ImageStates) => {

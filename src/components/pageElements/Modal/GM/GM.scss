@@ -1,7 +1,24 @@
-$GMSize: 400px;
+@import '../../../../utilities/spacing.scss';
 
 .container {
-  width: $GMSize;
-  height: $GMSize;
+  display: flex;
+
+  width: 700px;
+  height: 500px;
+
   background: lightyellow;
+}
+
+.options {
+  width: 150px;
+  margin: spacing();
+
+  background: lightGrey;
+}
+
+.selectedOption {
+  width: 100%;
+  margin: spacing();
+
+  background: white;
 }
