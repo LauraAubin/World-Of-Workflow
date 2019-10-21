@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import classNames from 'classnames';
 
+import Typography from '../../universalElements/Typography';
+
 import './CharacterFrame.scss';
 
 const MY_GRAVATOR =
@@ -21,12 +23,10 @@ export default function CharacterFrame({ name = 'Laura' }: Props) {
 
   return (
     <div className='portraitFrame' id='mainElement'>
-      <img
-        src={MY_GRAVATOR}
-        className={gravatarStyles}
-        alt='User profile'
-      />
-      <div className='name'>{name}</div>
+      <img src={MY_GRAVATOR} className={gravatarStyles} alt='User profile' />
+      <Typography type='content' style='name'>
+        {name}
+      </Typography>
       <div className='iconFrame'>
         <div className='iconResting' />
       </div>

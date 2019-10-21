@@ -24,21 +24,22 @@
 }
 
 .questContentHeaderText {
-  font-family: 'Morpheus';
-  font-weight: 500;
   font-size: 18px;
+  cursor: default;
 }
 
 .questContentDescriptionText {
-  font-family: 'Friz Quadrata';
   font-size: 13px;
   padding: spacing(extraTight) 0 spacing(tight) 0;
+
+  cursor: default;
 }
 
 .questDueDateText {
-  font-family: 'Friz Quadrata';
   font-size: 12px;
   color: rgba(0, 0, 0, 0.8);
+
+  cursor: default;
 }
 
 .completeButton {
