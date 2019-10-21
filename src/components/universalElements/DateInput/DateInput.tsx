@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import { simpleDate, newDate } from '../../../utilities/Date';
 
+import TextInput from '../TextInput';
+
 interface Props {
+  className?: string;
+  maxLength?: number;
   onChange(Date): void;
 }
 
-export default function DateInput({ onChange }: Props) {
+export default function DateInput({ className, maxLength, onChange }: Props) {
   const [date, setDate] = useState(simpleDate(newDate()));
 
   useEffect(() => {
@@ -17,11 +21,18 @@ export default function DateInput({ onChange }: Props) {
     onChange(new Date(alwaysIncludeYear));
   }, [date, onChange]);
 
-  const handleChange = event => {
-    setDate(event.target.value);
+  const handleChange = value => {
+    setDate(value);
   };
 
-  return <input value={date} onChange={handleChange} />;
+  return (
+    <TextInput
+      className={className}
+      maxLength={maxLength}
+      defaultValue={date}
+      handleChange={handleChange}
+    />
+  );
 }
 
 function isYearProvided(date: string) {
