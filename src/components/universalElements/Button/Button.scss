@@ -10,10 +10,10 @@ $minimizeButtonSize: 18px;
   cursor: pointer;
 
   height: 25px;
-  width: 115px;
+  min-width: 80px;
+  padding: 0 14px;
 
   font-size: 11px;
-  font-family: 'Friz Quadrata';
   color: color(yellow);
   text-shadow: 1px 1px 0 color(ink);
 
@@ -30,12 +30,23 @@ $minimizeButtonSize: 18px;
   }
 }
 
+.large {
+  height: 40px;
+  font-size: 16px;
+}
+
 .minimize {
+  min-width: 0;
+  padding: 0;
+
   height: $minimizeButtonSize;
   width: $minimizeButtonSize;
 }
 
 .actionItem {
+  min-width: 0;
+  padding: 0;
+
   height: 36px;
   width: 29px;
 }
