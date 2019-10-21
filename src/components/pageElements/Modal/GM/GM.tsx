@@ -14,7 +14,7 @@ export default function GM({ closeModal }: Props) {
       <div className='options'>
         <button>Create Quest</button>
       </div>
-      <div className='selectedOption'>
+      <div className='selectedOptionContainer'>
         <CreateQuest closeModal={closeModal} />
       </div>
     </div>

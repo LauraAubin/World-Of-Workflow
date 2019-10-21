@@ -1,24 +1,30 @@
 @import '../../../../utilities/spacing.scss';
 
 .container {
-  display: flex;
+  position: relative;
 
-  width: 700px;
-  height: 500px;
+  width: 900px;
+  height: 600px;
 
-  background: lightyellow;
+  background-image: url('../../../../art/ActionItems/GMContainer.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .options {
-  width: 150px;
-  margin: spacing();
+  position: absolute;
+  top: 85px;
+  left: 31px;
 
-  background: lightGrey;
+  width: 184px;
+  height: 494px;
 }
 
-.selectedOption {
-  width: 100%;
-  margin: spacing();
+.selectedOptionContainer {
+  position: absolute;
+  top: 75px;
+  right: 25px;
 
-  background: white;
+  width: 625px;
+  height: 500px;
 }
