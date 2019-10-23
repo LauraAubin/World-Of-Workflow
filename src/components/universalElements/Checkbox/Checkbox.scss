@@ -1,0 +1,10 @@
+$checkboxSize: 30px;
+
+.checkbox {
+  position: relative;
+  height: $checkboxSize;
+  width: $checkboxSize;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
