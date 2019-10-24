@@ -10,18 +10,18 @@ import Quest from './Quest';
 import './Modal.scss';
 
 interface Props {
-  showModal: ModalTypes | undefined;
+  shownModal: ModalTypes | undefined;
   selectedQuest?: QuestType;
   setShownModal(show): void;
 }
 
 export default function Modal({
-  showModal,
+  shownModal,
   selectedQuest,
   setShownModal
 }: Props) {
-  const GMShown = showModal === ModalTypes.GM;
-  const questSelected = showModal === ModalTypes.Quest && selectedQuest;
+  const GMShown = shownModal === ModalTypes.GM;
+  const questSelected = shownModal === ModalTypes.Quest && selectedQuest;
 
   const classes = classNames(
     'ModalArea',
