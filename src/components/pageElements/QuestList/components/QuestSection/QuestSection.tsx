@@ -19,7 +19,7 @@ export default function QuestSection({
   setSelectedQuest
 }: Props) {
   const questSectionTitle = (title: string) => (
-    <Typography type='content' style='sectionTitleText'>
+    <Typography type='content' styles='sectionTitleText'>
       {title}
     </Typography>
   );

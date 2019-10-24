@@ -35,7 +35,7 @@ export default function Quest({ quest, setShownModal }: Props) {
       {descriptionText(description)}
       {headerText('Quest Objectives')}
       {descriptionText(questObjectives)}
-      <Typography type='content' style='questDueDateText'>
+      <Typography type='content' styles='questDueDateText'>
         {`Due on ${dueDateMarkup}`}
       </Typography>
     </>
@@ -58,7 +58,7 @@ export default function Quest({ quest, setShownModal }: Props) {
 
 export function headerText(text) {
   return (
-    <Typography type='heading' style='questContentHeaderText'>
+    <Typography type='heading' styles='questContentHeaderText'>
       {text}
     </Typography>
   );
@@ -66,7 +66,7 @@ export function headerText(text) {
 
 export function descriptionText(text) {
   return (
-    <Typography type='content' style='questContentDescriptionText'>
+    <Typography type='content' styles='questContentDescriptionText'>
       {text}
     </Typography>
   );

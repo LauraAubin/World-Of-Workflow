@@ -23,11 +23,11 @@ export default function Quest({ record, setSelectedQuest }: Props) {
       </div>
 
       <div className='questDetailsText'>
-        <Typography type='content' style='title'>
+        <Typography type='content' styles='title'>
           {record.title}
         </Typography>
 
-        <Typography type='content' style='objective'>
+        <Typography type='content' styles='objective'>
           {`- ${record.questObjectives}`}
         </Typography>
       </div>

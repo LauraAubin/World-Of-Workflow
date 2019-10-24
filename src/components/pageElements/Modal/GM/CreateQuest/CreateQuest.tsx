@@ -108,7 +108,7 @@ export default function CreateQuest(this: any, { closeModal }: Props) {
 
       <div className='testElements'>
         <Checkbox checked={test} onClick={() => setTest(!test)} />
-        <Typography type='content' style='testText'>
+        <Typography type='content' styles='testText'>
           Create test quest
         </Typography>
       </div>

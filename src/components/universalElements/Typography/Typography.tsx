@@ -6,16 +6,16 @@ import './Typography.scss';
 
 interface Props {
   type: 'heading' | 'content';
-  style?: string;
+  styles?: string;
   children: string | React.ReactNode;
 }
 
-export default function Typography({ type, style, children }: Props) {
-  const styles = classNames(
-    style,
+export default function Typography({ type, styles, children }: Props) {
+  const textStyles = classNames(
+    styles,
     type == 'heading' && 'heading',
     type == 'content' && 'content'
   );
 
-  return <div className={styles}>{children}</div>;
+  return <div className={textStyles}>{children}</div>;
 }

@@ -24,7 +24,7 @@ export default function CharacterFrame({ name = 'Laura' }: Props) {
   return (
     <div className='portraitFrame' id='mainElement'>
       <img src={MY_GRAVATOR} className={gravatarStyles} alt='User profile' />
-      <Typography type='content' style='name'>
+      <Typography type='content' styles='name'>
         {name}
       </Typography>
       <div className='iconFrame'>

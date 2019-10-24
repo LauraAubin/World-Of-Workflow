@@ -8,7 +8,7 @@ export default function Minimap() {
   return (
     <div className='minimapContainer' id='mainElement'>
       <div className='frame'>
-        <Typography type='content' style='location'>
+        <Typography type='content' styles='location'>
           Shopify - 150 Elgin
         </Typography>
         <div className='mapArea' />
