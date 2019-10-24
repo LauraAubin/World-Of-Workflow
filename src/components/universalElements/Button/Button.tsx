@@ -47,7 +47,7 @@ const IMAGES = {
 interface Props {
   onClick(): void;
   children?: string;
-  /* Increases the size of the default button */
+  /* Increases the size of the default button and it's text */
   large?: boolean;
   /* A button with an x, used for close actions */
   minimize?: boolean;
@@ -70,11 +70,12 @@ export function Btn({ large, minimize, actionItem, onClick, children }: Props) {
 
   const [image, setImage] = useState<string>(getImagePath(ImageStates.default));
 
-  const modifierStyles = classNames(
+  const styles = classNames(
+    'button',
+    large && 'large',
     minimize && 'minimize',
     actionItem && 'actionItem'
   );
-  const styles = classNames('button', large ? 'large' : modifierStyles);
 
   return (
     <button

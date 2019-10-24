@@ -33,7 +33,7 @@ ipcMain.on('hideWindow', () => {
 });
 
 ipcMain.on('testEnvironment', (event, args) => {
-  event.reply('testEnvironmentReply', true);
+  event.reply('testEnvironmentReply', isDev);
 });
 
 ipcMain.on('writeTo', (event, args) => {
