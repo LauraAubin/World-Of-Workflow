@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { newDate } from '../../../../../utilities/Date';
+import { headerText } from '../../Quest/Quest';
+
+import Button from '../../../../universalElements/Button';
+import Checkbox from '../../../../universalElements/Checkbox';
 import DateInput from '../../../../universalElements/DateInput';
+import TextInput from '../../../../universalElements/TextInput';
+import Typography from '../../../../universalElements/Typography';
+
+import './CreateQuest.scss';
+import '../../Quest/Quest.scss';
 
 const { ipcRenderer } = window.require('electron');
 
@@ -9,7 +18,7 @@ interface Props {
   closeModal(): void;
 }
 
-export default function CreateQuest({ closeModal }: Props) {
+export default function CreateQuest(this: any, { closeModal }: Props) {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
@@ -17,15 +26,12 @@ export default function CreateQuest({ closeModal }: Props) {
   const [dueDate, setDueDate] = useState(newDate());
   const [test, setTest] = useState(false);
 
-  const handleChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-
-    name === 'title' && setTitle(value);
-    name === 'location' && setLocation(value);
-    name === 'description' && setDescription(value);
-    name === 'questObjectives' && setQuestObjectives(value);
-  };
+  useEffect(() => {
+    ipcRenderer.send('testEnvironment');
+    ipcRenderer.once('testEnvironmentReply', (event, args) => {
+      setTest(args);
+    });
+  }, [])
 
   const submit = () => {
     ipcRenderer.send('writeTo', {
@@ -44,61 +50,68 @@ export default function CreateQuest({ closeModal }: Props) {
     closeModal();
   };
 
-  const deleteRecords = condition => {
-    ipcRenderer.send('deleteRecords', {
-      where: condition
-    });
-  };
+  const contentMarkup = (
+    <>
+      <Typography type='heading'>
+        <TextInput
+          placeholder='Title'
+          maxLength={50}
+          handleChange={setTitle}
+          className='questContentHeaderText textHoverGlow'
+        />
+      </Typography>
 
-  const dumpTestData = () => {
-    deleteRecords({ test: true });
-    closeModal();
-  };
+      <Typography type='content'>
+        <TextInput
+          placeholder='Description'
+          maxLength={300}
+          handleChange={setDescription}
+          className='questContentDescriptionText textHoverGlow'
+        />
+      </Typography>
+
+      {headerText('Quest Objectives')}
+
+      <Typography type='content'>
+        <TextInput
+          placeholder='Objectives'
+          maxLength={200}
+          handleChange={setQuestObjectives}
+          className='questContentDescriptionText textHoverGlow'
+        />
+      </Typography>
+
+      <Typography type='content'>
+        <div className='questDueDateText oneLine'>
+          Due on&nbsp;
+          <DateInput
+            maxLength={40}
+            onChange={setDueDate}
+            className='textHoverGlow'
+          />
+        </div>
+      </Typography>
+    </>
+  );
 
   return (
-    <div>
-      <div>
-        Title
-        <input name='title' value={title} onChange={handleChange} />
+    <div className='createQuestContainer'>
+      <div className='createQuestBackground'>
+        <div className='contentArea createQuestContentArea'>
+          {contentMarkup}
+        </div>
       </div>
 
-      <div>
-        Location
-        <input name='location' value={location} onChange={handleChange} />
+      <Button large onClick={submit}>
+        Submit
+      </Button>
+
+      <div className='testElements'>
+        <Checkbox checked={test} onClick={() => setTest(!test)} />
+        <Typography type='content' style='testText'>
+          Create test quest
+        </Typography>
       </div>
-
-      <div>
-        Description
-        <textarea
-          name='description'
-          value={description}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        Quest Objectives
-        <input
-          name='questObjectives'
-          value={questObjectives}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        <DateInput onChange={setDueDate} />
-      </div>
-
-      <div>
-        <input type='checkbox' onClick={() => setTest(!test)} />
-        Test
-      </div>
-
-      <button onClick={submit}>Submit</button>
-
-      <br />
-
-      <button onClick={dumpTestData}>Dump all test data</button>
     </div>
   );
 }

@@ -32,6 +32,10 @@ ipcMain.on('hideWindow', () => {
   hide();
 });
 
+ipcMain.on('testEnvironment', (event, args) => {
+  event.reply('testEnvironmentReply', true);
+});
+
 ipcMain.on('writeTo', (event, args) => {
   const { table, contents } = args;
 
