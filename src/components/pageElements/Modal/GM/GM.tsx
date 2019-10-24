@@ -5,11 +5,24 @@ import Button from '../../../universalElements/Button';
 
 import './GM.scss';
 
+const { ipcRenderer } = window.require('electron');
+
 interface Props {
   closeModal(): void;
 }
 
 export default function GM({ closeModal }: Props) {
+  const deleteRecords = condition => {
+    ipcRenderer.send('deleteRecords', {
+      where: condition
+    });
+  };
+
+  const dumpTestData = () => {
+    deleteRecords({ test: true });
+    closeModal();
+  };
+
   return (
     <div className='container' id='mainElement'>
       <div className='gmCloseButton'>
@@ -18,6 +31,7 @@ export default function GM({ closeModal }: Props) {
 
       <div className='options'>
         <button>Create Quest</button>
+        <button onClick={dumpTestData}>Dump all test data</button>
       </div>
 
       <div className='selectedOptionContainer'>
