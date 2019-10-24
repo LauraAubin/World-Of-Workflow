@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import classNames from 'classnames';
 
+import Typography from '../../universalElements/Typography';
+
 import Button from '../../../art/Buttons/Button.png';
 import ButtonHover from '../../../art/Buttons/ButtonHover.png';
 import ButtonPressed from '../../../art/Buttons/ButtonPressed.png';
@@ -45,16 +47,18 @@ const IMAGES = {
 interface Props {
   onClick(): void;
   children?: string;
+  /* Increases the size of the default button and it's text */
+  large?: boolean;
   /* A button with an x, used for close actions */
   minimize?: boolean;
   /* A button showing an icon, used for sections with many interactions */
   actionItem?: ActionItems;
 }
 
-export function Btn({ minimize, actionItem, onClick, children }: Props) {
+export function Btn({ large, minimize, actionItem, onClick, children }: Props) {
   const determineImageToUse =
     (minimize && ImageKeys.minimize) ||
-    (actionItem == ActionItems.GM && ImageKeys.GMAction) ||
+    (actionItem === ActionItems.GM && ImageKeys.GMAction) ||
     ImageKeys.regular;
 
   const getImagePath = (state: ImageStates) => {
@@ -68,6 +72,7 @@ export function Btn({ minimize, actionItem, onClick, children }: Props) {
 
   const styles = classNames(
     'button',
+    large && 'large',
     minimize && 'minimize',
     actionItem && 'actionItem'
   );
@@ -82,7 +87,7 @@ export function Btn({ minimize, actionItem, onClick, children }: Props) {
       className={styles}
       style={{ backgroundImage: `url(${image})` }}
     >
-      {children}
+      <Typography type='content'>{children}</Typography>
     </button>
   );
 }

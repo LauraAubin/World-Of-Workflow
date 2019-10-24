@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Quest as QuestType } from '../../../../types';
 
 import Button from '../../../universalElements/Button';
+import Typography from '../../../universalElements/Typography';
 
 import './Quest.scss';
 
@@ -26,13 +27,6 @@ export default function Quest({ quest, setShownModal }: Props) {
     setShownModal(undefined);
   };
 
-  const headerText = text => (
-    <div className='questContentHeaderText'>{text}</div>
-  );
-  const descriptionText = text => (
-    <div className='questContentDescriptionText'>{text}</div>
-  );
-
   const dueDateMarkup = moment(dueDate).format('dddd, MMMM D');
 
   const contentMarkup = (
@@ -41,7 +35,9 @@ export default function Quest({ quest, setShownModal }: Props) {
       {descriptionText(description)}
       {headerText('Quest Objectives')}
       {descriptionText(questObjectives)}
-      <div className='questDueDateText'>Due on {dueDateMarkup}</div>
+      <Typography type='content' style='questDueDateText'>
+        {`Due on ${dueDateMarkup}`}
+      </Typography>
     </>
   );
 
@@ -57,5 +53,21 @@ export default function Quest({ quest, setShownModal }: Props) {
         <Button onClick={completeQuest}>Complete Quest</Button>
       </div>
     </div>
+  );
+}
+
+export function headerText(text) {
+  return (
+    <Typography type='heading' style='questContentHeaderText'>
+      {text}
+    </Typography>
+  );
+}
+
+export function descriptionText(text) {
+  return (
+    <Typography type='content' style='questContentDescriptionText'>
+      {text}
+    </Typography>
   );
 }

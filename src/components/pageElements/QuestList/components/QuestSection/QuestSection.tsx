@@ -3,6 +3,7 @@ import React from 'react';
 import { Quest as QuestType } from '../../../../../types';
 
 import Quest from '../Quest';
+import Typography from '../../../../universalElements/Typography';
 
 import './QuestSection.scss';
 
@@ -18,7 +19,9 @@ export default function QuestSection({
   setSelectedQuest
 }: Props) {
   const questSectionTitle = (title: string) => (
-    <div className='sectionTitleText'>{title}</div>
+    <Typography type='content' style='sectionTitleText'>
+      {title}
+    </Typography>
   );
 
   return (

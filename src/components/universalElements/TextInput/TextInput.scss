@@ -1,0 +1,9 @@
+.textInput {
+  cursor: text;
+  outline: none;
+}
+
+// Remove the placeholder when clicked on with :empty:not(:focus)
+[contentEditable=true]:empty:before{
+  content:attr(data-text)
+}

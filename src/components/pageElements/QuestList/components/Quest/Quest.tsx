@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Quest as QuestType } from '../../../../../types';
 
+import Typography from '../../../../universalElements/Typography';
+
 import './Quest.scss';
 
 interface Props {
@@ -21,8 +23,13 @@ export default function Quest({ record, setSelectedQuest }: Props) {
       </div>
 
       <div className='questDetailsText'>
-        <div className='title'>{record.title}</div>
-        <div className='objective'>- {record.questObjectives}</div>
+        <Typography type='content' style='title'>
+          {record.title}
+        </Typography>
+
+        <Typography type='content' style='objective'>
+          {`- ${record.questObjectives}`}
+        </Typography>
       </div>
     </div>
   );
