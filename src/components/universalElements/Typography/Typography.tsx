@@ -13,8 +13,8 @@ interface Props {
 export default function Typography({ type, styles, children }: Props) {
   const textStyles = classNames(
     styles,
-    type == 'heading' && 'heading',
-    type == 'content' && 'content'
+    type === 'heading' && 'heading',
+    type === 'content' && 'content'
   );
 
   return <div className={textStyles}>{children}</div>;

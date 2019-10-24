@@ -25,7 +25,7 @@ export default function TextInput({
         element.textContent = defaultValue;
       }
     }
-  }, []);
+  }, [defaultValue]);
 
   const maxTypingLength = event => {
     const textLength = event.target.textContent.length;
