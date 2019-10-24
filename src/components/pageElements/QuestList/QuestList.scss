@@ -8,8 +8,9 @@
 
 .stack {
   flex-direction: column;
-  max-width: 250px;
+  max-width: 260px;
 
   max-height: 70vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }

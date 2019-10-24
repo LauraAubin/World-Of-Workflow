@@ -1,6 +1,6 @@
 @import '../../../utilities/colors.scss';
 
-$minimizeButtonSize: 18px;
+$minimizeButtonSize: 19px;
 
 .button {
   padding: 0;
@@ -33,6 +33,8 @@ $minimizeButtonSize: 18px;
 .large {
   height: 40px;
   font-size: 16px;
+
+  padding: 0 30px;
 }
 
 .minimize {
