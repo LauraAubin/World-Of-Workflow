@@ -4,6 +4,7 @@ import Layout from './components/structure/Layout';
 import Error from './components/pageElements/Error';
 
 import { hideWindow } from './utilities/HideWindow';
+import { ModalContextProvider } from './context/modal';
 
 import './App.scss';
 
@@ -32,9 +33,11 @@ class App extends React.Component<{}, State> {
     const { databaseAvailable } = this.state;
 
     return (
-      <div className='MainWindow'>
-        {databaseAvailable ? <Layout /> : <Error />}
-      </div>
+      <ModalContextProvider>
+        <div className='MainWindow'>
+          {databaseAvailable ? <Layout /> : <Error />}
+        </div>
+      </ModalContextProvider>
     );
   }
 }

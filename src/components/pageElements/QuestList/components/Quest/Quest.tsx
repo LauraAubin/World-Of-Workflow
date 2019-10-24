@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Quest as QuestType } from '../../../../../types';
+import { Quest as QuestType, ModalTypes } from '../../../../../types';
+import { ModalContext } from '../../../../../context/modal';
 
 import Typography from '../../../../universalElements/Typography';
 
@@ -12,11 +13,18 @@ interface Props {
 }
 
 export default function Quest({ record, setSelectedQuest }: Props) {
+  const modalContext = useContext(ModalContext);
+
+  const selectedQuest = () => {
+    setSelectedQuest(record);
+    modalContext.onChange(ModalTypes.Quest);
+  };
+
   return (
     <div
       className='questContainer'
       key={record.created_at}
-      onClick={() => setSelectedQuest(record)}
+      onClick={selectedQuest}
     >
       <div className='questIcon'>
         <div className='questIconSymbol' />

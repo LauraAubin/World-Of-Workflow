@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import moment from 'moment';
 
 import { Quest as QuestType } from '../../../../types';
+import { ModalContext } from '../../../../context/modal';
 
 import Button from '../../../universalElements/Button';
 import Typography from '../../../universalElements/Typography';
@@ -12,11 +13,11 @@ const { ipcRenderer } = window.require('electron');
 
 interface Props {
   quest: QuestType;
-  setShownModal(show): void;
 }
 
-export default function Quest({ quest, setShownModal }: Props) {
+export default function Quest({ quest }: Props) {
   const { title, description, dueDate, questObjectives } = quest;
+  const modalContext = useContext(ModalContext);
 
   const completeQuest = () => {
     ipcRenderer.send('update', {
@@ -24,7 +25,7 @@ export default function Quest({ quest, setShownModal }: Props) {
       where: { completed: true }
     });
 
-    setShownModal(undefined);
+    modalContext.onChange(undefined);
   };
 
   const dueDateMarkup = moment(dueDate).format('dddd, MMMM D');
@@ -44,7 +45,7 @@ export default function Quest({ quest, setShownModal }: Props) {
   return (
     <div className='quest' id='mainElement'>
       <div className='closeButton'>
-        <Button minimize onClick={() => setShownModal(undefined)} />
+        <Button minimize onClick={() => modalContext.onChange(undefined)} />
       </div>
 
       <div className='contentArea'>{contentMarkup}</div>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { Quest, ModalTypes } from '../../../types';
+import { ModalContext } from '../../../context/modal';
 
 import Actionbar from '../../pageElements/Actionbar';
 import ActionItems from '../../pageElements/ActionItems';
@@ -14,9 +15,8 @@ import Grid from '../Grid';
 import './Layout.scss';
 
 export default function Layout() {
-  const [shownModal, setShownModal] = useState<ModalTypes | undefined>(
-    undefined
-  );
+  const modalContext = useContext(ModalContext);
+
   const [selectedQuest, setSelectedQuest] = useState<Quest | undefined>(
     undefined
   );
@@ -24,7 +24,7 @@ export default function Layout() {
   useEffect(() => {
     document.addEventListener('keypress', handleKeyPress);
     return () => document.removeEventListener('keypress', handleKeyPress);
-  }, [shownModal]);
+  }, [modalContext.show]);
 
   const handleKeyPress = event => {
     if (event.key === 'g') {
@@ -34,23 +34,8 @@ export default function Layout() {
       const userIsTyping =
         activeElementClasses && activeElementClasses.includes('textInput');
 
-      !userIsTyping && determineModalToShow(ModalTypes.GM);
+      !userIsTyping && modalContext.onChange(ModalTypes.GM);
     }
-  };
-
-  const determineModalToShow = (modalToShow: ModalTypes) => {
-    const questsNeverToggle = modalToShow === ModalTypes.Quest; // since you can consecutively open a new quest modal
-    const alreadyShown = modalToShow === shownModal;
-
-    const toggleModal =
-      alreadyShown && !questsNeverToggle ? undefined : modalToShow;
-
-    setShownModal(toggleModal);
-  };
-
-  const showSelectedQuest = (selectedQuest: Quest) => {
-    setSelectedQuest(selectedQuest);
-    setShownModal(ModalTypes.Quest);
   };
 
   const actionsMarkup = (
@@ -59,7 +44,7 @@ export default function Layout() {
         <Actionbar />
       </div>
       <div className='rightAlign'>
-        <ActionItems setShownModal={determineModalToShow} />
+        <ActionItems />
       </div>
     </div>
   );
@@ -84,18 +69,14 @@ export default function Layout() {
         spanColumns={{ start: 1, end: 4 }}
         spanRows={{ start: 2, end: 3 }}
       >
-        <Modal
-          shownModal={shownModal}
-          selectedQuest={selectedQuest}
-          setShownModal={determineModalToShow}
-        />
+        <Modal selectedQuest={selectedQuest} />
       </Grid.Section>
 
       <Grid.Section
         spanColumns={{ start: 3, end: 4 }}
         spanRows={{ start: 2, end: 3 }}
       >
-        <QuestList setSelectedQuest={showSelectedQuest} />
+        <QuestList setSelectedQuest={setSelectedQuest} />
       </Grid.Section>
 
       <Grid.Section
