@@ -9,11 +9,7 @@ import './QuestList.scss';
 
 const { ipcRenderer } = window.require('electron');
 
-interface Props {
-  setSelectedQuest(selectedQuest): void;
-}
-
-export default function QuestList({ setSelectedQuest }: Props) {
+export default function QuestList() {
   const [records, setRecords] = useState<QuestType[]>([]);
 
   useEffect(() => {
@@ -29,12 +25,7 @@ export default function QuestList({ setSelectedQuest }: Props) {
 
   const questSection = (title: string, records: QuestType[]) =>
     records.length > 0 && (
-      <QuestSection
-        key={title}
-        title={title}
-        records={records}
-        setSelectedQuest={setSelectedQuest}
-      />
+      <QuestSection key={title} title={title} records={records} />
     );
 
   const renderDailyQuests = (title: string, dueDate: Date) => {

@@ -10,14 +10,9 @@ import './QuestSection.scss';
 interface Props {
   title: string;
   records: QuestType[];
-  setSelectedQuest(record): void;
 }
 
-export default function QuestSection({
-  title,
-  records,
-  setSelectedQuest
-}: Props) {
+export default function QuestSection({ title, records }: Props) {
   const questSectionTitle = (title: string) => (
     <Typography type='content' styles='sectionTitleText'>
       {title}
@@ -31,7 +26,7 @@ export default function QuestSection({
       </div>
 
       {records.map(record => (
-        <Quest record={record} setSelectedQuest={setSelectedQuest} />
+        <Quest record={record} />
       ))}
     </>
   );

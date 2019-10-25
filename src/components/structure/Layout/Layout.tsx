@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 
-import { Quest, ModalTypes } from '../../../types';
+import { ModalTypes } from '../../../types';
 import { ModalContext } from '../../../context/modal';
 
 import Actionbar from '../../pageElements/Actionbar';
@@ -16,10 +16,6 @@ import './Layout.scss';
 
 export default function Layout() {
   const modalContext = useContext(ModalContext);
-
-  const [selectedQuest, setSelectedQuest] = useState<Quest | undefined>(
-    undefined
-  );
 
   useEffect(() => {
     document.addEventListener('keypress', handleKeyPress);
@@ -69,14 +65,14 @@ export default function Layout() {
         spanColumns={{ start: 1, end: 4 }}
         spanRows={{ start: 2, end: 3 }}
       >
-        <Modal selectedQuest={selectedQuest} />
+        <Modal />
       </Grid.Section>
 
       <Grid.Section
         spanColumns={{ start: 3, end: 4 }}
         spanRows={{ start: 2, end: 3 }}
       >
-        <QuestList setSelectedQuest={setSelectedQuest} />
+        <QuestList />
       </Grid.Section>
 
       <Grid.Section

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Quest as QuestType, ModalTypes } from '../../../../../types';
+import { Quest as QuestType } from '../../../../../types';
 import { ModalContext } from '../../../../../context/modal';
 
 import Typography from '../../../../universalElements/Typography';
@@ -9,15 +9,13 @@ import './Quest.scss';
 
 interface Props {
   record: QuestType;
-  setSelectedQuest(record): void;
 }
 
-export default function Quest({ record, setSelectedQuest }: Props) {
+export default function Quest({ record }: Props) {
   const modalContext = useContext(ModalContext);
 
   const selectedQuest = () => {
-    setSelectedQuest(record);
-    modalContext.onChange(ModalTypes.Quest);
+    modalContext.onChange(record);
   };
 
   return (

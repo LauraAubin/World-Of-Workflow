@@ -10,15 +10,11 @@ import Quest from './Quest';
 
 import './Modal.scss';
 
-interface Props {
-  selectedQuest?: QuestType;
-}
-
-export default function Modal({ selectedQuest }: Props) {
+export default function Modal() {
   const modalContext = useContext(ModalContext);
 
   const GMShown = modalContext.show === ModalTypes.GM;
-  const questSelected = modalContext.show === ModalTypes.Quest && selectedQuest;
+  const questSelected = isQuest(modalContext.show);
 
   const classes = classNames(
     'ModalArea',
@@ -26,11 +22,15 @@ export default function Modal({ selectedQuest }: Props) {
     questSelected && 'questModalArea'
   );
 
-  const renderModal =
-    (GMShown && <GM closeModal={() => modalContext.onChange(undefined)} />) ||
-    (selectedQuest && questSelected && (
-      <Quest quest={selectedQuest} />
-    ));
+  return (
+    <div className={classes}>
+      {GMShown && <GM closeModal={() => modalContext.onChange(undefined)} />}
+      {questSelected && <Quest quest={modalContext.show as QuestType} />}
+    </div>
+  );
+}
 
-  return <div className={classes}>{renderModal}</div>;
+function isQuest(object: any): object is QuestType {
+  if (object && (object as QuestType).table) return true;
+  return false;
 }

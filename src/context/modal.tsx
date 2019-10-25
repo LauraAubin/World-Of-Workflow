@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { ModalTypes } from '../types';
+import { ModalTypes, Quest } from '../types';
 
 interface Props {
   children: React.ReactNode;
 }
 
-type shownModalType = ModalTypes | undefined;
+type shownModalType = ModalTypes | Quest | undefined;
 
 export const ModalContext = React.createContext({
   show: undefined as shownModalType,
