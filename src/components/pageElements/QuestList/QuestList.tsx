@@ -75,7 +75,7 @@ export default function QuestList() {
   return (
     <div className='alignRight'>
       <div className='stack' id='mainElement'>
-        {renderPreviousQuests('Overdue', newDate('yesterday'))}
+        {renderPreviousQuests('Past', newDate('yesterday'))}
         {renderDailyQuests('Today', newDate())}
         {renderDailyQuests('Tomorrow', newDate('tomorrow'))}
         {todayIsBeforeThursday &&
