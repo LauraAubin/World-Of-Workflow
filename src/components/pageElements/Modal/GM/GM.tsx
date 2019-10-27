@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { ModalContext } from '../../../../context/modal';
 
 import CreateQuest from './CreateQuest';
 import Button from '../../../universalElements/Button';
@@ -7,11 +9,9 @@ import './GM.scss';
 
 const { ipcRenderer } = window.require('electron');
 
-interface Props {
-  closeModal(): void;
-}
+export default function GM() {
+  const modalContext = useContext(ModalContext);
 
-export default function GM({ closeModal }: Props) {
   const deleteRecords = condition => {
     ipcRenderer.send('deleteRecords', {
       where: condition
@@ -20,13 +20,13 @@ export default function GM({ closeModal }: Props) {
 
   const dumpTestData = () => {
     deleteRecords({ test: true });
-    closeModal();
+    modalContext.onChange(undefined);
   };
 
   return (
     <div className='container' id='mainElement'>
       <div className='gmCloseButton'>
-        <Button minimize onClick={closeModal} />
+        <Button minimize onClick={() => modalContext.onChange(undefined)} />
       </div>
 
       <div className='options'>
@@ -35,7 +35,7 @@ export default function GM({ closeModal }: Props) {
       </div>
 
       <div className='selectedOptionContainer'>
-        <CreateQuest closeModal={closeModal} />
+        <CreateQuest />
       </div>
     </div>
   );

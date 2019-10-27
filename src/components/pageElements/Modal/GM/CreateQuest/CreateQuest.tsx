@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { newDate } from '../../../../../utilities/Date';
 import { headerText } from '../../Quest/Quest';
+import { ModalContext } from '../../../../../context/modal';
 
 import Button from '../../../../universalElements/Button';
 import Checkbox from '../../../../universalElements/Checkbox';
@@ -14,17 +15,15 @@ import '../../Quest/Quest.scss';
 
 const { ipcRenderer } = window.require('electron');
 
-interface Props {
-  closeModal(): void;
-}
-
-export default function CreateQuest(this: any, { closeModal }: Props) {
+export default function CreateQuest() {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [questObjectives, setQuestObjectives] = useState('');
   const [dueDate, setDueDate] = useState(newDate());
   const [test, setTest] = useState(false);
+
+  const modalContext = useContext(ModalContext);
 
   useEffect(() => {
     ipcRenderer.send('testEnvironment');
@@ -47,7 +46,7 @@ export default function CreateQuest(this: any, { closeModal }: Props) {
       }
     });
 
-    closeModal();
+    modalContext.onChange(undefined);
   };
 
   const contentMarkup = (

@@ -24,7 +24,7 @@ export default function Modal() {
 
   return (
     <div className={classes}>
-      {GMShown && <GM closeModal={() => modalContext.onChange(undefined)} />}
+      {GMShown && <GM />}
       {questSelected && <Quest quest={modalContext.show as QuestType} />}
     </div>
   );
