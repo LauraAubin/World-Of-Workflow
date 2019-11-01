@@ -39,6 +39,8 @@ export default function QuestList() {
   };
 
   const renderQuestRange = (title: string, start: Date, end: Date) => {
+    const today = new Date().getDay();
+
     const saturday = 6;
     const sunday = 0;
 
@@ -46,8 +48,8 @@ export default function QuestList() {
       record =>
         new Date(record.dueDate) >= start &&
         new Date(record.dueDate) <= end &&
-        new Date(record.dueDate).getDay() !== saturday &&
-        new Date(record.dueDate).getDay() !== sunday &&
+        today !== saturday &&
+        today !== sunday &&
         !record.completed
     );
 
