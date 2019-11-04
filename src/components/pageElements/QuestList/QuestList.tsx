@@ -15,13 +15,25 @@ export default function QuestList() {
   useEffect(() => {
     ipcRenderer.send('readFrom', { table: 'quest' });
     ipcRenderer.once('readFromReply', (event, args) => {
-      const newRecords = JSON.stringify(records) !== JSON.stringify(args);
+      const incompleteRecords = args.filter(record => !record.completed);
+
+      const newRecords =
+        JSON.stringify(records) !== JSON.stringify(incompleteRecords);
 
       if (newRecords) {
-        setRecords(args);
+        setRecords(incompleteRecords);
       }
     });
   });
+
+  const questRange = (start: Date, end: Date) => {
+    const filterRecords = records.filter(
+      record =>
+        new Date(record.dueDate) >= start && new Date(record.dueDate) <= end
+    );
+
+    return filterRecords;
+  };
 
   const questSection = (title: string, records: QuestType[]) =>
     records.length > 0 && (
@@ -30,35 +42,43 @@ export default function QuestList() {
 
   const renderDailyQuests = (title: string, dueDate: Date) => {
     const filterRecords = records.filter(
-      record =>
-        simpleDate(new Date(record.dueDate)) === simpleDate(dueDate) &&
-        !record.completed
+      record => simpleDate(new Date(record.dueDate)) === simpleDate(dueDate)
     );
 
     return questSection(title, filterRecords);
   };
 
-  const renderQuestRange = (title: string, start: Date, end: Date) => {
+  const renderThisWeek = () => {
+    const records = questRange(newDate('after-tomorrow'), newDate('friday'));
+
+    return questSection('This week', records);
+  };
+
+  const renderThisWeekend = () => {
     const today = new Date().getDay();
-
+    const friday = 5;
     const saturday = 6;
-    const sunday = 0;
 
-    const filterRecords = records.filter(
-      record =>
-        new Date(record.dueDate) >= start &&
-        new Date(record.dueDate) <= end &&
-        today !== saturday &&
-        today !== sunday &&
-        !record.completed
-    );
+    const omitSaturdayIfTodayIsFriday = (dueDate: string) =>
+      today === friday && new Date(dueDate).getDay() !== saturday;
 
-    return questSection(title, filterRecords);
+    const filterRecords = questRange(
+      newDate('saturday'),
+      newDate('sunday')
+    ).filter(record => omitSaturdayIfTodayIsFriday(record.dueDate));
+
+    return questSection('This weekend', filterRecords);
+  };
+
+  const renderNextWeek = () => {
+    const records = questRange(newDate('next-monday'), newDate('next-friday'));
+
+    return questSection('Next week', records);
   };
 
   const renderRemainingQuests = (title: string, after: Date) => {
     const filterRecords = records.filter(
-      record => new Date(record.dueDate) > after && !record.completed
+      record => new Date(record.dueDate) > after
     );
 
     return questSection(title, filterRecords);
@@ -66,7 +86,7 @@ export default function QuestList() {
 
   const renderPreviousQuests = (title: string, before: Date) => {
     const filterRecords = records.filter(
-      record => new Date(record.dueDate) < before && !record.completed
+      record => new Date(record.dueDate) < before
     );
 
     return questSection(title, filterRecords);
@@ -80,22 +100,9 @@ export default function QuestList() {
         {renderPreviousQuests('Past', newDate('yesterday'))}
         {renderDailyQuests('Today', newDate())}
         {renderDailyQuests('Tomorrow', newDate('tomorrow'))}
-        {todayIsBeforeThursday &&
-          renderQuestRange(
-            'This week',
-            newDate('after-tomorrow'),
-            newDate('friday')
-          )}
-        {renderQuestRange(
-          'This weekend',
-          newDate('saturday'),
-          newDate('sunday')
-        )}
-        {renderQuestRange(
-          'Next week',
-          newDate('next-monday'),
-          newDate('next-friday')
-        )}
+        {todayIsBeforeThursday && renderThisWeek()}
+        {renderThisWeekend()}
+        {renderNextWeek()}
         {renderRemainingQuests('Later', newDate('next-friday'))}
       </div>
     </div>
