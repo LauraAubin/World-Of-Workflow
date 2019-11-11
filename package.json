@@ -6,6 +6,9 @@
   "repository": "https://github.com/LauraAubin/World-Of-Workflow",
   "main": "public/electron.js",
   "homepage": "./",
+  "engines": {
+    "node": "12.4.0"
+  },
   "dependencies": {
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.10",
