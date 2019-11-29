@@ -59,7 +59,7 @@ export default function Quest({ quest }: Props) {
 
 export function headerText(text) {
   return (
-    <Typography type='heading' styles='questContentHeaderText'>
+    <Typography type='heading' color='black' styles='questContentHeaderText'>
       {text}
     </Typography>
   );

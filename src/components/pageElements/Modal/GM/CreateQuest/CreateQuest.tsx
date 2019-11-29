@@ -30,7 +30,7 @@ export default function CreateQuest() {
     ipcRenderer.once('testEnvironmentReply', (event, args) => {
       setTest(args);
     });
-  }, [])
+  }, []);
 
   const submit = () => {
     ipcRenderer.send('writeTo', {
@@ -51,18 +51,18 @@ export default function CreateQuest() {
 
   const contentMarkup = (
     <>
-      <Typography type='heading'>
+      <Typography type='heading' color='black'>
         <TextInput
-          placeholder='Title'
+          placeholder='Title...'
           maxLength={50}
           handleChange={setTitle}
           className='questContentHeaderText textHoverGlow'
         />
       </Typography>
 
-      <Typography type='content'>
+      <Typography type='content' color='black'>
         <TextInput
-          placeholder='Description'
+          placeholder='Description...'
           maxLength={300}
           handleChange={setDescription}
           className='questContentDescriptionText textHoverGlow'
@@ -71,16 +71,16 @@ export default function CreateQuest() {
 
       {headerText('Quest Objectives')}
 
-      <Typography type='content'>
+      <Typography type='content' color='black'>
         <TextInput
-          placeholder='Objectives'
+          placeholder='Objectives...'
           maxLength={200}
           handleChange={setQuestObjectives}
           className='questContentDescriptionText textHoverGlow'
         />
       </Typography>
 
-      <Typography type='content'>
+      <Typography type='content' color='black'>
         <div className='questDueDateText oneLine'>
           Due on&nbsp;
           <DateInput

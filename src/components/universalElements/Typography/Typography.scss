@@ -1,3 +1,5 @@
+@import '../../../utilities/colors.scss';
+
 .heading {
   font-family: 'Morpheus';
   font-weight: 500;
@@ -5,4 +7,20 @@
 
 .content {
   font-family: 'Friz Quadrata';
+}
+
+.yellow {
+  color: color(yellow);
+}
+
+.green {
+  color: color(green);
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
 }

@@ -33,7 +33,7 @@ export default function Quest({ record }: Props) {
           {record.title}
         </Typography>
 
-        <Typography type='content' styles='objective'>
+        <Typography type='content' color='white' styles='objective'>
           {`- ${record.questObjectives}`}
         </Typography>
       </div>
