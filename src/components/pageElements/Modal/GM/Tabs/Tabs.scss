@@ -1,0 +1,26 @@
+.tabList {
+  position: absolute;
+  top: 85px;
+  left: 31px;
+
+  width: 184px;
+  height: 494px;
+}
+
+.tab {
+  cursor: pointer;
+  color: white;
+}
+
+.selectedTab {
+  border: yellow solid 1px;
+}
+
+.selectedTabContent {
+  position: absolute;
+  top: 75px;
+  right: 25px;
+
+  width: 625px;
+  height: 500px;
+}

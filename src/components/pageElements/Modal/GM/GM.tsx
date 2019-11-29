@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { ModalContext } from '../../../../context/modal';
 
+import Tabs from './Tabs';
 import CreateQuest from './CreateQuest';
 import Button from '../../../universalElements/Button';
 
@@ -29,14 +30,16 @@ export default function GM() {
         <Button minimize onClick={() => modalContext.onChange(undefined)} />
       </div>
 
-      <div className='options'>
-        <button>Create Quest</button>
-        <button onClick={dumpTestData}>Dump all test data</button>
-      </div>
-
-      <div className='selectedOptionContainer'>
-        <CreateQuest />
-      </div>
+      <Tabs
+        tabs={[
+          { title: 'Create Quest', icon: '', content: <CreateQuest /> },
+          {
+            title: 'Admin settings',
+            icon: '',
+            content: <button onClick={dumpTestData}>Dump all test data</button>
+          }
+        ]}
+      />
     </div>
   );
 }
