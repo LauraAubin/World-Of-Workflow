@@ -18,10 +18,10 @@ export default function Typography({
   children
 }: Props) {
   const textStyles = classNames(
+    'typography',
     color,
     styles,
-    type === 'heading' && 'heading',
-    type === 'content' && 'content'
+    type,
   );
 
   return <div className={textStyles}>{children}</div>;

@@ -1,19 +1,69 @@
+@import '../../../../../utilities/spacing.scss';
+@import '../../../../../utilities/colors.scss';
+
+$tab-height: 35px;
+$icon-position: 20px;
+
 .tabList {
   position: absolute;
   top: 85px;
-  left: 31px;
+  left: 30px;
 
-  width: 184px;
+  width: 190px;
   height: 494px;
 }
 
 .tab {
   cursor: pointer;
-  color: white;
+
+  display: flex;
+  align-items: center;
+
+  height: $tab-height;
+  width: 100%;
+
+  background-image: url('../../../../../art/ActionItems/GM/TabBackground.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  margin: spacing(extraTight) 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tabText {
+  font-size: 13px;
+  margin-left: $icon-position + 15;
+}
+
+.tabIcon {
+  position: absolute;
+  left: -1 * $icon-position;
+
+  width: 68px;
+  height: 68px;
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.tabIconBackground {
+  position: absolute;
+
+  width: $tab-height + 5;
+  height: $tab-height + 5;
+
+  background: radial-gradient(closest-side, black, transparent);
 }
 
 .selectedTab {
-  border: yellow solid 1px;
+  background-image: url('../../../../../art/ActionItems/GM/TabBackground-selected.png');
 }
 
 .selectedTabContent {

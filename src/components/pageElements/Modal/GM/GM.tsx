@@ -7,6 +7,9 @@ import CreateQuest from './CreateQuest';
 import Button from '../../../universalElements/Button';
 import Typography from '../../../universalElements/Typography';
 
+import Paper from '../../../../art/ActionItems/GM/TabIcons/paper.png';
+import Wow from '../../../../art/ActionItems/GM/TabIcons/wow.png';
+
 import './GM.scss';
 
 const { ipcRenderer } = window.require('electron');
@@ -37,10 +40,10 @@ export default function GM() {
 
       <Tabs
         tabs={[
-          { title: 'Create Quest', icon: '', content: <CreateQuest /> },
+          { title: 'Create Quest', icon: Paper, content: <CreateQuest /> },
           {
             title: 'Admin Settings',
-            icon: '',
+            icon: Wow,
             content: <button onClick={dumpTestData}>Dump all test data</button>
           }
         ]}

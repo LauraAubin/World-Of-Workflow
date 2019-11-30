@@ -1,5 +1,9 @@
 @import '../../../utilities/colors.scss';
 
+.typography {
+  user-select: none;
+}
+
 .heading {
   font-family: 'Morpheus';
   font-weight: 500;

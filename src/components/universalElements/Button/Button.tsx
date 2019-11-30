@@ -10,8 +10,8 @@ import ButtonPressed from '../../../art/Buttons/ButtonPressed.png';
 
 import Minimize from '../../../art/Buttons/Minimize.png';
 
-import ActionItemGM from '../../../art/ActionItems/ActionItem-GM.png';
-import ActionItemGMPressed from '../../../art/ActionItems/ActionItem-GMPressed.png';
+import ActionItemGM from '../../../art/ActionItems/GM/ActionItem-GM.png';
+import ActionItemGMPressed from '../../../art/ActionItems/GM/ActionItem-GMPressed.png';
 
 import { ActionItems } from '../../../types';
 
