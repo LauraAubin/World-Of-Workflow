@@ -112,8 +112,9 @@ export default function QuestList() {
 function sortAscending(array) {
   const exactDate = object => new Date(object.dueDate).getTime();
 
-  array.sort(function(x, y) {
-    return exactDate(x) - exactDate(y);
+  // each iteration shifts the 'current' element by +1
+  array.sort(function(next, current) {
+    return exactDate(next) - exactDate(current);
   });
 
   return array;
