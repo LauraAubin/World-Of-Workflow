@@ -81,7 +81,7 @@ export default function QuestList() {
       record => new Date(record.dueDate) > after
     );
 
-    return questSection(title, filterRecords);
+    return questSection(title, sortAscending(filterRecords));
   };
 
   const renderPreviousQuests = (title: string, before: Date) => {
@@ -107,4 +107,14 @@ export default function QuestList() {
       </div>
     </div>
   );
+}
+
+function sortAscending(array) {
+  const exactDate = object => new Date(object.dueDate).getTime();
+
+  array.sort(function(x, y) {
+    return exactDate(x) - exactDate(y);
+  });
+
+  return array;
 }
