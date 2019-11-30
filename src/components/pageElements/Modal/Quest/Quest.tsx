@@ -67,7 +67,11 @@ export function headerText(text) {
 
 export function descriptionText(text) {
   return (
-    <Typography type='content' styles='questContentDescriptionText'>
+    <Typography
+      type='content'
+      color='black'
+      styles='questContentDescriptionText'
+    >
       {text}
     </Typography>
   );
