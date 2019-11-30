@@ -1,8 +1,6 @@
 @import '../../../../../utilities/spacing.scss';
 @import '../../../../../utilities/colors.scss';
 
-$fontSize: 13px;
-
 .questContainer {
   display: flex;
   align-items: flex-start;
@@ -41,7 +39,6 @@ $fontSize: 13px;
 }
 
 .title {
-  font-size: $fontSize;
   color: color(yellow, dark);
   text-shadow: 1px 1px 0 color(ink, light);
 
@@ -49,6 +46,5 @@ $fontSize: 13px;
 }
 
 .objective {
-  font-size: $fontSize;
   text-shadow: 1px 1px 0 color(ink, light);
 }

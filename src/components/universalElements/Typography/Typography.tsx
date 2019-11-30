@@ -7,6 +7,7 @@ import './Typography.scss';
 interface Props {
   type: 'heading' | 'content';
   color?: 'yellow' | 'green' | 'white' | 'black';
+  size?: 'small' | 'default' | 'large';
   styles?: string;
   children: string | React.ReactNode;
 }
@@ -14,6 +15,7 @@ interface Props {
 export default function Typography({
   type,
   color = 'yellow',
+  size = 'default',
   styles,
   children
 }: Props) {
@@ -22,6 +24,7 @@ export default function Typography({
     color,
     styles,
     type,
+    `${size}Text`,
   );
 
   return <div className={textStyles}>{children}</div>;

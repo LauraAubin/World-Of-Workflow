@@ -72,7 +72,7 @@ export function Btn({ large, minimize, actionItem, onClick, children }: Props) {
 
   const styles = classNames(
     'button',
-    large && 'large',
+    large && 'largeButton',
     minimize && 'minimize',
     actionItem && 'actionItem'
   );
@@ -87,7 +87,9 @@ export function Btn({ large, minimize, actionItem, onClick, children }: Props) {
       className={styles}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <Typography type='content'>{children}</Typography>
+      <Typography type='content' size={(large && 'large') || 'small'}>
+        {children}
+      </Typography>
     </button>
   );
 }

@@ -1,8 +1,6 @@
 @import '../../../../../utilities/colors.scss';
 @import '../../../../../utilities/spacing.scss';
 
-$questTitleFontSize: 15px;
-
 .sectionHeaderSize {
   height: 35px;
 }
@@ -23,7 +21,7 @@ $questTitleFontSize: 15px;
   top: 13px;
   left: 25px;
 
-  font-size: $questTitleFontSize;
+  font-size: 15px;
   font-weight: 500;
   text-shadow: 1px 0 0 color(ink, light);
   cursor: default;

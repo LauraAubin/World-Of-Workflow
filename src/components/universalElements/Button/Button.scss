@@ -13,7 +13,6 @@ $minimizeButtonSize: 19px;
   min-width: 80px;
   padding: 0 14px;
 
-  font-size: 11px;
   color: color(yellow);
   text-shadow: 1px 1px 0 color(ink);
 
@@ -30,9 +29,8 @@ $minimizeButtonSize: 19px;
   }
 }
 
-.large {
+.largeButton {
   height: 40px;
-  font-size: 16px;
 
   padding: 0 30px;
 }

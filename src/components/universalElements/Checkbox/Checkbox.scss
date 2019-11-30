@@ -1,4 +1,4 @@
-$checkboxSize: 30px;
+$checkboxSize: 26px;
 
 .checkbox {
   position: relative;
@@ -7,4 +7,6 @@ $checkboxSize: 30px;
 
   background-repeat: no-repeat;
   background-size: cover;
+
+  cursor: pointer;
 }
