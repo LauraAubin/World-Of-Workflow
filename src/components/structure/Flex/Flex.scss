@@ -1,0 +1,20 @@
+.flex {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.horizontalAlignment-left {
+  justify-content: left;
+}
+
+.horizontalAlignment-center {
+  justify-content: center;
+}
+
+.verticalAlignment-center {
+  align-items: center;
+}
