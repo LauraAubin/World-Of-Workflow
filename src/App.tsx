@@ -5,6 +5,7 @@ import Error from './components/pageElements/Error';
 
 import { hideWindow } from './utilities/HideWindow';
 import { ModalContextProvider } from './context/modal';
+import { AdminSettingsContextProvider } from './context/adminSettings';
 
 import './App.scss';
 
@@ -34,9 +35,11 @@ class App extends React.Component<{}, State> {
 
     return (
       <ModalContextProvider>
-        <div className='MainWindow'>
-          {databaseAvailable ? <Layout /> : <Error />}
-        </div>
+        <AdminSettingsContextProvider>
+          <div className='MainWindow'>
+            {databaseAvailable ? <Layout /> : <Error />}
+          </div>
+        </AdminSettingsContextProvider>
       </ModalContextProvider>
     );
   }
