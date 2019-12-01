@@ -11,6 +11,7 @@ import CharacterFrame from '../../pageElements/CharacterFrame';
 import QuestList from '../../pageElements/QuestList';
 
 import Grid from '../Grid';
+import Flex from '../Flex';
 
 import './Layout.scss';
 
@@ -35,14 +36,16 @@ export default function Layout() {
   };
 
   const actionsMarkup = (
-    <div className='attachToBottom' id='mainElement'>
-      <div className='absoluteContainer'>
-        <Actionbar />
+    <Flex columnOrientation horizontalAlignment='right' id='mainElement'>
+      <div className='absoluteForeground'>
+        <Flex horizontalAlignment='space-between'>
+          <Actionbar />
+        </Flex>
       </div>
-      <div className='rightAlign'>
+      <Flex horizontalAlignment='right' verticalAlignment='bottom'>
         <ActionItems />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 
   return (

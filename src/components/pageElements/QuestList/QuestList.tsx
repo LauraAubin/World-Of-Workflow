@@ -4,6 +4,7 @@ import { simpleDate, newDate } from '../../../utilities/Date';
 import { Quest as QuestType } from '../../../types';
 
 import QuestSection from './components/QuestSection';
+import Flex from '../../structure/Flex';
 
 import './QuestList.scss';
 
@@ -95,16 +96,18 @@ export default function QuestList() {
   const todayIsBeforeThursday = newDate().getDay() < 4;
 
   return (
-    <div className='alignRight'>
-      <div className='stack' id='mainElement'>
-        {renderPreviousQuests('Past', newDate('yesterday'))}
-        {renderDailyQuests('Today', newDate())}
-        {renderDailyQuests('Tomorrow', newDate('tomorrow'))}
-        {todayIsBeforeThursday && renderThisWeek()}
-        {renderThisWeekend()}
-        {renderNextWeek()}
-        {renderRemainingQuests('Later', newDate('next-friday'))}
-      </div>
+    <div className='questListContainer'>
+      <Flex horizontalAlignment='right'>
+        <div className='stack' id='mainElement'>
+          {renderPreviousQuests('Past', newDate('yesterday'))}
+          {renderDailyQuests('Today', newDate())}
+          {renderDailyQuests('Tomorrow', newDate('tomorrow'))}
+          {todayIsBeforeThursday && renderThisWeek()}
+          {renderThisWeekend()}
+          {renderNextWeek()}
+          {renderRemainingQuests('Later', newDate('next-friday'))}
+        </div>
+      </Flex>
     </div>
   );
 }

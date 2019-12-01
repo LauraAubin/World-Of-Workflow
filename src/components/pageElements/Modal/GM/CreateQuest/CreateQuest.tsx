@@ -9,6 +9,7 @@ import Checkbox from '../../../../universalElements/Checkbox';
 import DateInput from '../../../../universalElements/DateInput';
 import TextInput from '../../../../universalElements/TextInput';
 import Typography from '../../../../universalElements/Typography';
+import Flex from '../../../../structure/Flex';
 
 import './CreateQuest.scss';
 import '../../Quest/Quest.scss';
@@ -81,20 +82,26 @@ export default function CreateQuest() {
       </Typography>
 
       <Typography type='content' color='black'>
-        <div className='questDueDateText oneLine'>
-          Due on&nbsp;
-          <DateInput
-            maxLength={40}
-            onChange={setDueDate}
-            className='textHoverGlow'
-          />
+        <div className='questDueDateText'>
+          <Flex wrap>
+            Due on&nbsp;
+            <DateInput
+              maxLength={40}
+              onChange={setDueDate}
+              className='textHoverGlow'
+            />
+          </Flex>
         </div>
       </Typography>
     </>
   );
 
   return (
-    <div className='createQuestContainer'>
+    <Flex
+      columnOrientation
+      horizontalAlignment='center'
+      verticalAlignment='center'
+    >
       <div className='createQuestBackground'>
         <div className='contentArea createQuestContentArea'>
           {contentMarkup}
@@ -106,11 +113,11 @@ export default function CreateQuest() {
       </Button>
 
       <div className='testElements'>
-        <Checkbox checked={test} onClick={() => setTest(!test)} />
-        <Typography type='content' styles='testText'>
-          Create test quest
-        </Typography>
+        <Flex verticalAlignment='center'>
+          <Checkbox checked={test} onClick={() => setTest(!test)} />
+          <Typography type='content'>Create test quest</Typography>
+        </Flex>
       </div>
-    </div>
+    </Flex>
   );
 }

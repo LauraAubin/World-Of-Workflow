@@ -1,20 +1,5 @@
-.attachToBottom {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.absoluteContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
+.absoluteForeground {
   z-index: -1;
   position: absolute;
-}
-
-.rightAlign {
-  display: flex;
-  justify-content: flex-end;
+  width: 100%;
 }

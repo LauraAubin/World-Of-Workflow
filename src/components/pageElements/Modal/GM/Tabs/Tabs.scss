@@ -15,12 +15,7 @@ $icon-position: 20px;
 
 .tab {
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-
   height: $tab-height;
-  width: 100%;
 
   background-image: url('../../../../../art/ActionItems/GM/TabBackground.png');
   background-repeat: no-repeat;

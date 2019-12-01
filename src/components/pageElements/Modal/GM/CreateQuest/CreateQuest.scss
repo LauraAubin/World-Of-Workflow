@@ -1,15 +1,6 @@
 @import '../../../../../utilities/colors.scss';
 @import '../../../../../utilities/spacing.scss';
 
-.createQuestContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-}
-
 .createQuestBackground {
   position: relative;
   height: 420px;
@@ -24,23 +15,11 @@
   top: 50px;
 }
 
-.oneLine {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .textHoverGlow:hover {
   text-shadow: spacing(extraTight) / 2 spacing(extraTight) / 2 spacing(tight)
     color(red, dark);
 }
 
 .testElements {
-  display: flex;
-  align-items: center;
-
   margin-top: spacing(tight);
-}
-
-.testText {
-  font-size: 14px;
 }

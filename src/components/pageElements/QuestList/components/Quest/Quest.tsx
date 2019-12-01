@@ -4,6 +4,7 @@ import { Quest as QuestType } from '../../../../../types';
 import { ModalContext } from '../../../../../context/modal';
 
 import Typography from '../../../../universalElements/Typography';
+import Flex from '../../../../structure/Flex';
 
 import './Quest.scss';
 
@@ -24,19 +25,21 @@ export default function Quest({ record }: Props) {
       key={record.created_at}
       onClick={selectedQuest}
     >
-      <div className='questIcon'>
-        <div className='questIconSymbol' />
-      </div>
+      <Flex>
+        <div className='questIcon'>
+          <div className='questIconSymbol' />
+        </div>
 
-      <div className='questDetailsText'>
-        <Typography type='content' styles='title'>
-          {record.title}
-        </Typography>
+        <div className='questDetailsText'>
+          <Typography type='content' styles='title'>
+            {record.title}
+          </Typography>
 
-        <Typography type='content' color='white' styles='objective'>
-          {`- ${record.questObjectives}`}
-        </Typography>
-      </div>
+          <Typography type='content' color='white' styles='objective'>
+            {`- ${record.questObjectives}`}
+          </Typography>
+        </div>
+      </Flex>
     </div>
   );
 }

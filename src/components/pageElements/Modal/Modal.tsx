@@ -7,6 +7,7 @@ import { ModalContext } from '../../../context/modal';
 
 import GM from './GM';
 import Quest from './Quest';
+import Flex from '../../structure/Flex';
 
 import './Modal.scss';
 
@@ -16,16 +17,14 @@ export default function Modal() {
   const GMShown = modalContext.show === ModalTypes.GM;
   const questSelected = isQuest(modalContext.show);
 
-  const classes = classNames(
-    'ModalArea',
-    GMShown && 'questGMArea',
-    questSelected && 'questModalArea'
-  );
+  const classes = classNames(questSelected && 'questModalArea');
 
   return (
     <div className={classes}>
-      {GMShown && <GM />}
-      {questSelected && <Quest quest={modalContext.show as QuestType} />}
+      <Flex horizontalAlignment={(questSelected && 'left') || 'center'}>
+        {GMShown && <GM />}
+        {questSelected && <Quest quest={modalContext.show as QuestType} />}
+      </Flex>
     </div>
   );
 }

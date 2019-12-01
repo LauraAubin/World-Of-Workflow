@@ -1,8 +1,6 @@
 @import '../../../utilities/spacing.scss';
 
-.alignRight {
-  display: flex;
-  justify-content: flex-end;
+.questListContainer {
   padding-right: spacing(loose);
 }
 

@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import Typography from '../../../../../universalElements/Typography';
+import Flex from '../../../../../structure/Flex';
 
 import '../Tabs.scss';
 
@@ -18,12 +19,14 @@ export default function Tab({ title, icon, selected, setSelectedTab }: Props) {
 
   return (
     <div className={styles} onClick={() => setSelectedTab(title)}>
-      <div className='tabIconBackground' />
-      <div style={{ backgroundImage: `url(${icon})` }} className='tabIcon' />
+      <Flex verticalAlignment='center'>
+        <div className='tabIconBackground' />
+        <div style={{ backgroundImage: `url(${icon})` }} className='tabIcon' />
 
-      <Typography type='content' styles='tabText'>
-        {title}
-      </Typography>
+        <Typography type='content' styles='tabText'>
+          {title}
+        </Typography>
+      </Flex>
     </div>
   );
 }
