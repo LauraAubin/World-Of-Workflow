@@ -4,6 +4,7 @@ import { ModalContext } from '../../../../context/modal';
 
 import Tabs from './Tabs';
 import CreateQuest from './CreateQuest';
+import AdminSettings from './AdminSettings';
 import Button from '../../../universalElements/Button';
 import Typography from '../../../universalElements/Typography';
 
@@ -12,27 +13,14 @@ import Wow from '../../../../art/ActionItems/GM/TabIcons/wow.png';
 
 import './GM.scss';
 
-const { ipcRenderer } = window.require('electron');
-
 export default function GM() {
   const modalContext = useContext(ModalContext);
 
-  const deleteRecords = condition => {
-    ipcRenderer.send('deleteRecords', {
-      where: condition
-    });
-  };
-
-  const dumpTestData = () => {
-    deleteRecords({ test: true });
-    modalContext.onChange(undefined);
-  };
-
   return (
     <div className='container' id='mainElement'>
-      <div className='gmTitle'>
-        <Typography type='content'>Game Master</Typography>
-      </div>
+      <Typography type='content' styles='gmTitle'>
+        Game Master
+      </Typography>
 
       <div className='gmCloseButton'>
         <Button minimize onClick={() => modalContext.onChange(undefined)} />
@@ -41,11 +29,7 @@ export default function GM() {
       <Tabs
         tabs={[
           { title: 'Create Quest', icon: Paper, content: <CreateQuest /> },
-          {
-            title: 'Admin Settings',
-            icon: Wow,
-            content: <button onClick={dumpTestData}>Dump all test data</button>
-          }
+          { title: 'Admin Settings', icon: Wow, content: <AdminSettings /> }
         ]}
       />
     </div>
